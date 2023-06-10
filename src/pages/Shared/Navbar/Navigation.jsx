@@ -39,21 +39,21 @@ const Navigation = () => {
 
     const navList = (
         <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal" >
+            <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
                 <NavLink to='/' className="flex items-center">
                     Home
                 </NavLink>
             </Typography>
 
 
-            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal" >
+            <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
                 <NavLink to='/instructors' className="flex items-center">
                     Instructors
                 </NavLink>
             </Typography>
 
 
-            <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal" >
+            <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
                 <NavLink to='/classes' className="flex items-center">
                     Classes
                 </NavLink>
@@ -62,7 +62,7 @@ const Navigation = () => {
             {
                 user ?
                     <>
-                        <Typography as="li" variant="small" color="blue-gray" className="p-1 font-normal" >
+                        <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
                             <NavLink className="flex items-center">
                                 DashBoard
                             </NavLink>
@@ -71,7 +71,7 @@ const Navigation = () => {
                             <MenuHandler>
                                 <Avatar
                                     variant="circular"
-                                    alt="candice wu"
+                                    alt="user"
                                     className="cursor-pointer"
                                     src={user?.photoURL}
                                 />
@@ -79,7 +79,7 @@ const Navigation = () => {
                             <MenuList>
                                 <MenuItem className="flex items-center gap-2">
                                     <UserCircleIcon strokeWidth={2} className="h-4 w-4" />
-                                    <Typography variant="small" className="font-normal">
+                                    <Typography variant="lead" className="font-normal">
                                         DashBoard
                                     </Typography>
                                 </MenuItem>
@@ -87,7 +87,7 @@ const Navigation = () => {
                                 <hr className="my-2 border-blue-gray-50" />
                                 <MenuItem className="flex items-center gap-2 ">
                                     <PowerIcon strokeWidth={2} className="h-4 w-4" />
-                                    <Typography onClick={handleLogOut} variant="small" className="font-normal">
+                                    <Typography onClick={handleLogOut} variant="lead" className="font-normal">
                                         Log Out
                                     </Typography>
                                 </MenuItem>
@@ -97,7 +97,7 @@ const Navigation = () => {
                     :
                     <>
                         <NavLink to='/login'>
-                            <Button variant="gradient" size="sm" className="hidden lg:inline-block" >
+                            <Button variant="gradient" size="md" className="hidden lg:inline-block" >
                                 <span>Login</span>
                             </Button>
                         </NavLink>
@@ -116,13 +116,10 @@ const Navigation = () => {
             </section>
             <Navbar className="sticky inset-0 z-10 bg-transparent h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
                 <div className="flex items-center justify-between text-blue-gray-900">
-                    <Typography
-                        as="a"
-                        href="#"
-                        className="mr-4 cursor-pointer py-1.5 font-medium"
-                    >
-                        Summer Camp
-                    </Typography>
+                   <NavLink to='/'>
+                    <Typography className="mr-4 cursor-pointer py-1.5  font-bold text-3xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent" > Sports Camp </Typography>
+                   </NavLink>
+                    
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">{navList}</div>
                         {/* //button */}

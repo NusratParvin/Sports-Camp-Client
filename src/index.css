@@ -22,14 +22,14 @@
   width: 100%;
 
   .seperatorGradient {
-    width: 3000px;
+    width: 100%;
     height: 5px;
     animation: rotate 3s infinite linear;
     -webkit-animation: rotate 12s infinite linear;
   }
 
 }
-
+/* 
 @-webkit-keyframes rotate {
   from {
     background-position: -3000px;
@@ -48,7 +48,7 @@
   to {
     background-position: 0px;
   }
-}
+} */
 
 .seperatorGradient {
   background: rgb(48, 255, 144);

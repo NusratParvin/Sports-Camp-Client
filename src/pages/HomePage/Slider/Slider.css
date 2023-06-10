@@ -18,7 +18,7 @@
     height: 580px;
   }
   
-  .swiper-slide {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  .swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;

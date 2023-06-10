@@ -14,8 +14,6 @@ const Classes = () => {
         }
     })
 
-    console.log(classes);
-
     return (
         <div >
             <div className='md:w-full w-screen h-[450px] relative mb-24'>

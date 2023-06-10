@@ -47,61 +47,44 @@ const Slider = () => {
       >
         <SwiperSlide>
           <img
-            className="relative h-full w-full rounded-xl opacity-90"
-            src={image1}
-          />
-          {/* <div className="absolute top-40 left-2/4 flex w-[calc(100%-4rem)] -translate-x-2/4 justify-between rounded-xl bg-transparent py-4 px-6 shadow-lg shadow-black/5 saturate-200 backdrop-blur-sm">
-            {/* <> */}
-            {/* <Typography variant="h5" color="white">
-              Sara Lamalo
-            </Typography>
-            <Typography color="gray" className="mt-2 font-normal">
-              20 July 2022
-            </Typography> */}
-            {/* </div> */}
-            {/* <Typography variant="h5" color="blue-gray">
-              Growth
-            </Typography> */}
-          {/* </div> */} 
-          {/* <div className="inset-0 h-full bg-black/40"><p className="absolute top-40 tracking-wider text-white text-5xl font-bold  uppercase animate-pulse ">
-                      TALK WITH YOUR FEET. PLAY WITH YOUR HEART.
-
-          </p>
-          </div> */}
-          <div className="absolute top-40 tracking-wide text-black text-opacity-50 text-5xl font-bold left-1/4 uppercase">
-          TALK WITH YOUR FEET. PLAY WITH YOUR HEART.
-
+            className="relative h-full w-full opacity-90"
+            src={image1}  />
+          <div class="absolute bottom-30 w-full h-1/3 px-5 bg-black/40 text-center text-white text-opacity-60 text-5xl font-bold tracking-wide uppercase py-10 animate-pulse">
+           TALK WITH YOUR FEET
+          <br/>
+           PLAY WITH YOUR HEART.
           </div>
-          {/* </figure> */}
 
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="relative h-full w-full rounded-xl opacity-60" src={image2} alt="" />
+            className="relative h-full w-full opacity-60" src={image2} alt="" />
             {/* <div class="absolute bottom-30 w-full h-36 px-5 py-3 bg-black/40 text-center text-white">Flower One Caption</div> */}
-            <div className="absolute top-40 tracking-wide text-white text-opacity-80 text-5xl font-bold left-1/4 uppercase">
-          TALK WITH YOUR FEET. PLAY WITH YOUR HEART.
+            <div class="absolute bottom-30 w-full h-1/3 px-5 bg-black/40 text-center text-white text-opacity-60 text-5xl font-bold tracking-wide uppercase py-14 animate-pulse">
+          Basketball can be your favourite !
 
           </div>
 
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="relative h-full w-full rounded-xl  opacity-70" src={image3} alt="" />
-<div class="absolute bottom-30 w-full h-1/3 px-5 py-3 bg-black/40 text-center text-white">
+            className="relative h-full w-full  opacity-70" src={image3} alt="" />
+<div class="absolute bottom-30 w-full h-1/3 px-5 bg-black/40 text-center text-white text-opacity-60 text-5xl font-bold  uppercase py-14 tracking-wide animate-pulse">
             Swimming keeps you healthy!
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="relative h-full w-full rounded-xl opacity-60" src={image4} alt="" />
-            <div className="absolute top-40 tracking-wide text-black text-opacity-50 text-5xl font-bold left-1/4 uppercase">
+            className="relative h-full w-full opacity-60" src={image4} alt="" />
+           <div class="absolute bottom-30 w-full h-1/3 px-5 bg-black/40 text-center text-white text-opacity-60 text-5xl font-bold  uppercase py-14 tracking-wide">
             Best sports academy <br/>for kids
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <img src={image5} alt="" />
-
+          <div class="absolute bottom-30 w-full h-1/3 px-5 bg-black/40 text-center text-white text-opacity-60 text-5xl font-bold  uppercase py-14 tracking-wide animate-pulse">
+           Enjoyable swimming  <br/>classes for kids
+          </div>
         </SwiperSlide>
 
       </Swiper>

@@ -4,6 +4,15 @@
 
 
 
+* {
+  /* font-family: 'Josefin Sans', sans-serif; */
+  font-family: 'Ubuntu', sans-serif;
+
+  /* font-family: 'EB Garamond', serif; */
+  /* font-family: "Lucida Console", "Courier New", monospace; */
+  /* font-family: "Book Antiqua", "SERIF"; */
+}
+
 
 /**********************/
 /* top seperator bar */

@@ -3,17 +3,19 @@ import { Navbar, Typography, Button, IconButton, Card, Collapse, Slider, } from 
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
-import {Menu, MenuHandler, MenuList, MenuItem, Avatar,  } from "@material-tailwind/react";
-  import {Cog6ToothIcon, PowerIcon,
-    InboxArrowDownIcon, UserCircleIcon, LifebuoyIcon} from "@heroicons/react/24/outline";
-    import Carousel from "nuka-carousel"
-    import image from "../../../assets/sports-academy.jpg"
+import { Menu, MenuHandler, MenuList, MenuItem, Avatar, } from "@material-tailwind/react";
+import {
+    Cog6ToothIcon, PowerIcon,
+    InboxArrowDownIcon, UserCircleIcon, LifebuoyIcon
+} from "@heroicons/react/24/outline";
+import Carousel from "nuka-carousel"
+import image from "../../../assets/sports-academy.jpg"
 import { easeCircleOut, easeElasticOut } from 'd3-ease';
-    
+
 
 
 const Navigation = () => {
-    const { user,logOut } = useAuth()
+    const { user, logOut } = useAuth()
     const [openNav, setOpenNav] = React.useState(false);
 
 
@@ -22,15 +24,15 @@ const Navigation = () => {
 
     useEffect(() => {
         window.addEventListener(
-          "resize",
-          () => window.innerWidth >= 960 && setOpenNav(false)
+            "resize",
+            () => window.innerWidth >= 960 && setOpenNav(false)
         );
-      }, []);
+    }, []);
 
     const handleLogOut = () => {
-        
+
         logOut()
-            .then(() => { console.log('got you')})
+            .then(() => { console.log('got you') })
             .catch(error => console.log(error));
     }
 
@@ -66,40 +68,40 @@ const Navigation = () => {
                             </NavLink>
                         </Typography>
                         <Menu>
-      <MenuHandler>
-        <Avatar
-          variant="circular"
-          alt="candice wu"
-          className="cursor-pointer"
-          src={user?.photoURL}
-        />
-      </MenuHandler>
-      <MenuList>
-        <MenuItem className="flex items-center gap-2">
-          <UserCircleIcon strokeWidth={2} className="h-4 w-4" />
-          <Typography variant="small" className="font-normal">
-            DashBoard
-          </Typography>
-        </MenuItem>
+                            <MenuHandler>
+                                <Avatar
+                                    variant="circular"
+                                    alt="candice wu"
+                                    className="cursor-pointer"
+                                    src={user?.photoURL}
+                                />
+                            </MenuHandler>
+                            <MenuList>
+                                <MenuItem className="flex items-center gap-2">
+                                    <UserCircleIcon strokeWidth={2} className="h-4 w-4" />
+                                    <Typography variant="small" className="font-normal">
+                                        DashBoard
+                                    </Typography>
+                                </MenuItem>
 
-        <hr className="my-2 border-blue-gray-50" />
-        <MenuItem className="flex items-center gap-2 ">
-          <PowerIcon strokeWidth={2} className="h-4 w-4" />
-          <Typography onClick={handleLogOut} variant="small" className="font-normal">
-            Log Out
-          </Typography>
-        </MenuItem>
-      </MenuList>
-    </Menu>
+                                <hr className="my-2 border-blue-gray-50" />
+                                <MenuItem className="flex items-center gap-2 ">
+                                    <PowerIcon strokeWidth={2} className="h-4 w-4" />
+                                    <Typography onClick={handleLogOut} variant="small" className="font-normal">
+                                        Log Out
+                                    </Typography>
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
                     </>
                     :
                     <>
-                    <NavLink to='/login'>
-                        <Button variant="gradient" size="sm" className="hidden lg:inline-block" >
-                            <span>Login</span>
-                        </Button>
-                    </NavLink>
-                        
+                        <NavLink to='/login'>
+                            <Button variant="gradient" size="sm" className="hidden lg:inline-block" >
+                                <span>Login</span>
+                            </Button>
+                        </NavLink>
+
                     </>
             }
 
@@ -107,11 +109,11 @@ const Navigation = () => {
     );
 
     return (
-        <>
-        <section className="seperatorWrapper">
-  <div className="seperatorGradient">
-  </div>
-</section>
+        < div className='sticky top-0 z-10'>
+            <section className=" seperatorWrapper">
+                <div className="seperatorGradient">
+                </div>
+            </section>
             <Navbar className="sticky inset-0 z-10 bg-transparent h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
                 <div className="flex items-center justify-between text-blue-gray-900">
                     <Typography
@@ -168,6 +170,10 @@ const Navigation = () => {
                     </Button>
                 </Collapse>
             </Navbar>
+            {/* <section className=" seperatorWrapper">
+                <div className="seperatorGradient">
+                </div>
+            </section> */}
 
             {/* <Carousel autoplay="true" autoplayInterval="3000"
             speed="2000"
@@ -184,7 +190,7 @@ const Navigation = () => {
 
 
 
-        </>
+        </div>
     );
 };
 

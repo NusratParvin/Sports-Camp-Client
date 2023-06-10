@@ -29,26 +29,7 @@
   }
 
 }
-/* 
-@-webkit-keyframes rotate {
-  from {
-    background-position: -3000px;
-  }
-
-  to {
-    background-position: 0px;
-  }
-}
-
-@keyframes rotate {
-  from {
-    background-position: -3000px;
-  }
-
-  to {
-    background-position: 0px;
-  }
-} */
+/* / */
 
 .seperatorGradient {
   background: rgb(48, 255, 144);

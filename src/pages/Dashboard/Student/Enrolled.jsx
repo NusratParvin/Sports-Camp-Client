@@ -11,9 +11,12 @@ const Enrolled = () => {
     return (
         <div className="w-4/5 mx-auto">
 
-            <div className="text-center text-gray-800 text-3xl py-5">
+            <div className="text-center text-gray-800 text-2xl py-5">
                 <p>Enrolled Classes</p>
             </div>
+
+            {enrolledClass.length!==0 ?
+
             <div className="">
                 <Card className="overflow-x-hidden h-full w-full">
                     <table className="w-full min-w-max table-auto text-left">
@@ -72,6 +75,10 @@ const Enrolled = () => {
                     </table>
                 </Card>
             </div>
+            :
+            <div className="text-center mt-8">No data.</div>
+
+                        }
 
         </div>
     );

@@ -48,7 +48,7 @@ const Selected = () => {
     return (
         <div className="w-11/12 mx-auto">
 
-            <div className="text-center text-gray-800 text-3xl py-5">
+            <div className="text-center text-gray-800 text-2xl py-5">
                 <p>Selected Classes</p>
             </div>
 

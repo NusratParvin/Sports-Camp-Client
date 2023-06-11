@@ -8,7 +8,7 @@ import { useState } from "react";
 
 
 const ClassesCard = ({ data }) => {
-    const { _id, image, name, price, seatsAvailable, instructor } = data
+    const { _id, image, name, price, seatsAvailable, instructor,studentsEnrolled } = data
     const existingClassNames = 'w-72  hover:scale-110 hover:duration-1000'; // Replace with your existing class names
     const redBackgroundClassName = seatsAvailable == 0 ? 'bg-red-300 ' : '';
     const className = classNames(existingClassNames, redBackgroundClassName);
@@ -68,6 +68,8 @@ const ClassesCard = ({ data }) => {
                         <strong> Instructor:</strong> {instructor}
                         <br />
                         <strong>Available Seats:</strong> {seatsAvailable}
+                        <br />
+                        <strong>Students Enrolled:</strong> {studentsEnrolled}
                     </Typography>
                 </CardBody>
                 <CardFooter className="pt-0">

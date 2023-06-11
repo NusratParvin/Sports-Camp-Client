@@ -40,7 +40,7 @@ const DashboardLayout = () => {
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
                             <div className="mb-2 flex justify-between items-center gap-1 px-2 py-4">
 
-                                <Typography variant="h6" className='text-2xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent'>
+                                <Typography variant="h6" className='text-xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent'>
                                     Sports Camp
                                 </Typography>
                                 <img src={image} alt="brand" className="h-24 w-20 " />
@@ -175,7 +175,7 @@ const DashboardLayout = () => {
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
                             <div className="mb-2 flex justify-between items-center gap-1 px-2 py-4">
 
-                                <Typography variant="h6" className='text-2xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent'>
+                                <Typography variant="h6" className='text-xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent'>
                                     Sports Camp
                                 </Typography>
                                 <img src={image} alt="brand" className="h-24 w-20 " />
@@ -285,7 +285,7 @@ const DashboardLayout = () => {
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
                             <div className="mb-2 flex justify-between items-center gap-1 px-2 py-4">
 
-                                <Typography variant="h6" className='text-2xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent'>
+                                <Typography variant="h6" className='text-xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent'>
                                     Sports Camp
                                 </Typography>
                                 <img src={image} alt="brand" className="h-24 w-20 " />

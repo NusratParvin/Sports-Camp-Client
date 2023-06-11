@@ -6,6 +6,7 @@ import image from '../assets/slider/29655-triathlon.gif'
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useRole from "../hooks/useRole";
+import useCart from "../hooks/useCart";
 
 
 const DashboardLayout = () => {
@@ -13,7 +14,7 @@ const DashboardLayout = () => {
     const [open, setOpen] = useState(0);
     const navigate = useNavigate()
     const [isRole] = useRole()
-    // console.log(isRole);
+    const [cart]=useCart()
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
     };
@@ -221,12 +222,19 @@ const DashboardLayout = () => {
                                                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                                                 </ListItemPrefix>
                                                 <NavLink to='selected'>Selected</NavLink>
+                                                <ListItemSuffix>
+                                                    <Chip value={cart?.length || 0} size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+                                                </ListItemSuffix>
                                             </ListItem>
+                                            
                                             <ListItem>
                                                 <ListItemPrefix>
                                                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                                                 </ListItemPrefix>
                                                 <NavLink to='enrolled'>Enrolled</NavLink>
+                                                <ListItemSuffix>
+                                                    <Chip value='0' size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+                                                </ListItemSuffix>
                                             </ListItem>
                                         </List>
                                     </AccordionBody>
@@ -279,13 +287,13 @@ const DashboardLayout = () => {
 
                                     </ListItemPrefix>
                                     <Typography color="blue-gray" className="mr-auto font-normal">
-                                     <NavLink to='/'>Home</NavLink>   
+                                        <NavLink to='/'>Home</NavLink>
                                     </Typography>
                                 </ListItem>
                                 <Accordion
                                     open={open === 2}
                                     icon={
-                                        <ChevronDownIcon  strokeWidth={2.5} className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""}`}
+                                        <ChevronDownIcon strokeWidth={2.5} className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""}`}
                                         />
                                     }
                                 >
@@ -311,6 +319,9 @@ const DashboardLayout = () => {
                                                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                                                 </ListItemPrefix>
                                                 <NavLink to='allclasses'>All Classes</NavLink>
+                                                {/* <ListItemSuffix>
+                                                    <Chip value={cart?.length || 0} size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+                                                </ListItemSuffix> */}
                                             </ListItem>
                                             <ListItem>
                                                 <ListItemPrefix>
@@ -348,9 +359,9 @@ const DashboardLayout = () => {
                     </div>
                 </div>
             }
-            
-          
-          
+
+
+
 
         </div>
 

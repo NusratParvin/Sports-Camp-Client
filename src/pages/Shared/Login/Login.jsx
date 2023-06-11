@@ -1,7 +1,6 @@
 import image from "../../../assets/slider/two-multiracional-brothers-playing-basketball-court-near-park.jpg"
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2'
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 

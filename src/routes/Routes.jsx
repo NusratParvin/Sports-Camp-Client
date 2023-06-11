@@ -9,6 +9,9 @@ import Home from "../pages/HomePage/Home/Home";
 import Error from "../pages/Error/Error";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
+import DashboardLayout from "../layouts/DashboardLayout";
+import StudentHome from "../pages/Dashboard/Student/StudentHome";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -39,5 +42,15 @@ export const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path:'/dashboard',
+    element:<PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
+    children:[
+      {
+        path:'/dashboard',
+        element: <StudentHome></StudentHome>
+      }
+    ]
+  }
 
 ])

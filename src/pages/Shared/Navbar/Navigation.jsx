@@ -18,10 +18,6 @@ const Navigation = () => {
     const { user, logOut } = useAuth()
     const [openNav, setOpenNav] = React.useState(false);
 
-
-
-
-
     useEffect(() => {
         window.addEventListener(
             "resize",
@@ -63,7 +59,7 @@ const Navigation = () => {
                 user ?
                     <>
                         <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
-                            <NavLink className="flex items-center">
+                            <NavLink to='/dashboard' className="flex items-center">
                                 DashBoard
                             </NavLink>
                         </Typography>
@@ -77,17 +73,19 @@ const Navigation = () => {
                                 />
                             </MenuHandler>
                             <MenuList>
-                                <MenuItem className="flex items-center gap-2">
+                                {/* <MenuItem className="flex items-center gap-2">
                                     <UserCircleIcon strokeWidth={2} className="h-4 w-4" />
-                                    <Typography variant="lead" className="font-normal">
+                                    <Typography variant="small" className="font-normal">
+                                        <NavLink to='/dashboard'>
                                         DashBoard
+                                        </NavLink>
                                     </Typography>
-                                </MenuItem>
+                                </MenuItem> */}
 
-                                <hr className="my-2 border-blue-gray-50" />
+                                {/* <hr className="my-2 border-blue-gray-50" /> */}
                                 <MenuItem className="flex items-center gap-2 ">
                                     <PowerIcon strokeWidth={2} className="h-4 w-4" />
-                                    <Typography onClick={handleLogOut} variant="lead" className="font-normal">
+                                    <Typography onClick={handleLogOut} variant="small" className="font-normal">
                                         Log Out
                                     </Typography>
                                 </MenuItem>

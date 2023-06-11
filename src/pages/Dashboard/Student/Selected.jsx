@@ -1,9 +1,9 @@
 import { Button, ButtonGroup, Card, Typography } from "@material-tailwind/react";
 import useCart from "../../../hooks/useCart";
-import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { Link } from "react-router-dom";
 
 
 const TABLE_HEAD = ["#", "Class Name","Price", "Available Seats",  "Payment","Delete"];
@@ -30,14 +30,14 @@ const Selected = () => {
                             toast.success("Deleted Successfully!")
                         }
                         else{
-                            toast.error("not deleted")
+                            toast.error("Not deleted")
                         }
                     })
                 }
               },
               {
                 label: 'No',
-                onClick: () => alert('Click No')
+                onClick: () => {}
               }
             ]
           });
@@ -68,7 +68,7 @@ const Selected = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {cart.map(({ _id,name, price, seatsAvailable }, index) => {
+                        {cart.map(({_id,name,price,seatsAvailable}, index) => {
                             const isLast = index === cart.length - 1;
                             const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
@@ -96,12 +96,15 @@ const Selected = () => {
                                     </td>
                                     <td className={classes}>
                                         <Typography  variant="small" color="blue" className="font-medium text-center">
-                                        <Button variant="text" color="indigo">Pay Now</Button>
+                                            <Link to={`/dashboard/payment/${_id}`}>                                       
+                                             <Button variant="text" color="indigo">Pay Now</Button>
+
+                                            </Link>
                                         </Typography>
                                     </td>
                                     <td className={classes}>
                                         <Typography variant="small"  className="font-medium">
-                                        <Button onClick={()=>handleDelete(_id)} className="text-red-500" variant="text">X</Button>
+                                        <Button onClick={()=>handleDelete(singleClass._id)} className="text-red-500" variant="text">X</Button>
                                         </Typography>
                                     </td>
                                 </tr>

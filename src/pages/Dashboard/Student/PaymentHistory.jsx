@@ -1,30 +1,46 @@
-import { Button, ButtonGroup, Card, Typography } from "@material-tailwind/react";
-import useCart from "../../../hooks/useCart";
+import React, { useEffect, useState } from 'react';
+import useAxios from '../../../hooks/useAxios';
+import { toast } from 'react-toastify';
+import { Card, Typography } from "@material-tailwind/react";
+import moment from 'moment';
 
-const TABLE_HEAD = ["#", "Class Name", "Price", "Available Seats", "Status"];
 
-const Enrolled = () => {
-    const [cart, refetch] = useCart()
-    
-    const enrolledClass= cart.filter(cl=>cl.status==="Paid")
+const TABLE_HEAD = ["#", "Class Name", "Tansaction ID", "Price", "Date"];
+
+const PaymentHistory = () => {
+    const [Axios] = useAxios()
+    const [history, setHistory] = useState([])
+
+    useEffect(() => {
+        Axios.get('/history')
+            .then(res => {
+                console.log(res.data);
+                setHistory(res.data)
+            })
+            .catch(error => {
+                toast.error(error)            // Handle any error that occurs during the request
+            });
+    }, [])
+
 
     return (
-        <div className="w-4/5 mx-auto">
+
+        <div className="w-full mx-auto ">
 
             <div className="text-center text-gray-800 text-3xl py-5">
-                <p>Enrolled Classes</p>
+                <p>Payment History</p>
             </div>
-            <div className="">
-                <Card className="overflow-x-hidden h-full w-full">
+            <div className='mt-8 w-full mx-auto'>
+                <Card className=" overflow-x-scroll h-full w-full">
                     <table className="w-full min-w-max table-auto text-left">
                         <thead>
                             <tr>
                                 {TABLE_HEAD.map((head) => (
-                                    <th key={head} className="border-b border-blue-gray-300 bg-blue-gray-50 p-4">
+                                    <th key={head} className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
                                         <Typography
                                             variant="small"
-                                            color="indigo"
-                                            className="text-center leading-none opacity-90 font-bold "
+                                            color="blue-gray"
+                                            className="font-normal leading-none opacity-70"
                                         >
                                             {head}
                                         </Typography>
@@ -33,8 +49,8 @@ const Enrolled = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {enrolledClass.map(({ _id, name, price, seatsAvailable,status }, index) => {
-                                const isLast = index === cart.length - 1;
+                            {history.map(({ _id, price, date, className, transactionId }, index) => {
+                                const isLast = index === history.length - 1;
                                 const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
                                 return (
@@ -46,25 +62,24 @@ const Enrolled = () => {
                                         </td>
                                         <td className={classes}>
                                             <Typography variant="small" color="blue-gray" className="font-normal">
-                                                {name}
+                                                {className}
                                             </Typography>
                                         </td>
                                         <td className={classes}>
-                                            <Typography variant="small" color="blue-gray" className="font-normal text-center">
+                                            <Typography variant="small" color="blue" className="font-normal">
+                                                {transactionId}
+                                            </Typography>
+                                        </td>
+                                        <td className={classes}>
+                                            <Typography variant="small" color="blue-gray" className="font-bold">
                                                 ${price}
                                             </Typography>
                                         </td>
                                         <td className={classes}>
-                                            <Typography variant="small" color="blue-gray" className="font-normal text-center">
-                                                {seatsAvailable}
+                                            <Typography as="a" href="#" variant="small" color="blue" className="font-medium">
+                                                {moment(date).format('DD/MM/YY')}
                                             </Typography>
                                         </td>
-                                        <td className={classes}>
-                                            <Typography variant="small" color="green" className="font-bold text-center">
-                                                {status}
-                                            </Typography>
-                                        </td>
-                                       
                                     </tr>
                                 );
                             })}
@@ -72,9 +87,8 @@ const Enrolled = () => {
                     </table>
                 </Card>
             </div>
-
         </div>
     );
 };
 
-export default Enrolled;
+export default PaymentHistory;

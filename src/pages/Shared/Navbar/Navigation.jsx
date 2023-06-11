@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Carousel from "nuka-carousel"
 import image from "../../../assets/sports-academy.jpg"
+import logo from "../../../assets/slider/29655-triathlon.gif"
 import { easeCircleOut, easeElasticOut } from 'd3-ease';
 
 
@@ -107,15 +108,17 @@ const Navigation = () => {
     );
 
     return (
-        < div className='sticky top-0 z-10'>
+        < div className='sticky top-0 z-10 bg-white'>
             <section className=" seperatorWrapper">
                 <div className="seperatorGradient">
                 </div>
             </section>
-            <Navbar className="sticky inset-0 z-10 bg-transparent h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
+            <Navbar className=" inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-2">
                 <div className="flex items-center justify-between text-blue-gray-900">
-                   <NavLink to='/'>
+                   <NavLink to='/' className='flex items-center'>
                     <Typography className="mr-4 cursor-pointer py-1.5  font-bold text-3xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent" > Sports Camp </Typography>
+                    <img src={logo} alt="brand" className="h-16 w-18 " />
+
                    </NavLink>
                     
                     <div className="flex items-center gap-4">

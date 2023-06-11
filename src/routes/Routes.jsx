@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import Selected from "../pages/Dashboard/Student/Selected";
 import Enrolled from "../pages/Dashboard/Student/Enrolled";
 import Payment from "../pages/Dashboard/Student/Payment";
+import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path:'payment/:id',
         element: <Payment></Payment>
+      },
+      {
+        path:'history',
+        element: <PaymentHistory></PaymentHistory>
       },
     ]
   }

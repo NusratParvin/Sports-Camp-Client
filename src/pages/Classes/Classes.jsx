@@ -27,7 +27,7 @@ const Classes = () => {
                 </div>
             </div>
 
-            <div className=' grid grid-cols-4 gap-7 mx-12 mt-10 mb-14 flex-wrap border'>
+            <div className=' grid grid-cols-3 gap-10 mt-10 mb-14 flex-wrap w-4/5 mx-auto'>
 
                 {classes.map(cl => (
                     <Fade duration={2000}>

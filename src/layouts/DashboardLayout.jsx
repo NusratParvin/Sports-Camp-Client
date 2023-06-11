@@ -14,10 +14,12 @@ const DashboardLayout = () => {
     const [open, setOpen] = useState(0);
     const navigate = useNavigate()
     const [isRole] = useRole()
-    const [cart]=useCart()
+    const [cart] = useCart()
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
     };
+    const selectedClass= cart.filter(cl=>cl.status!=="Paid")
+    const enrolledClass= cart.filter(cl=>cl.status==="Paid")
 
     const handleLogOut = () => {
         logOut()
@@ -167,7 +169,7 @@ const DashboardLayout = () => {
                 </div>
             }
             {isRole === 'Student' &&
-                <div className="flex md:justify-between md:flex-row bg-purple-100 h-screen">
+                <div className="flex md:justify-between md:flex-row  h-screen">
                     <div>
 
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
@@ -188,7 +190,7 @@ const DashboardLayout = () => {
 
                                     </ListItemPrefix>
                                     <Typography color="blue-gray" className="mr-auto font-normal">
-                                        Home
+                                        <NavLink to='/'>Home</NavLink>
                                     </Typography>
                                 </ListItem>
                                 <Accordion
@@ -223,24 +225,24 @@ const DashboardLayout = () => {
                                                 </ListItemPrefix>
                                                 <NavLink to='selected'>Selected</NavLink>
                                                 <ListItemSuffix>
-                                                    <Chip value={cart?.length || 0} size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+                                                    <Chip value={selectedClass?.length || 0} size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
                                                 </ListItemSuffix>
                                             </ListItem>
-                                            
+
                                             <ListItem>
                                                 <ListItemPrefix>
                                                     <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
                                                 </ListItemPrefix>
                                                 <NavLink to='enrolled'>Enrolled</NavLink>
                                                 <ListItemSuffix>
-                                                    <Chip value='0' size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
+                                                    <Chip value={enrolledClass.length || 0} size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
                                                 </ListItemSuffix>
                                             </ListItem>
                                         </List>
                                     </AccordionBody>
                                 </Accordion>
                                 <hr className="my-2 border-dashed border-indigo-200" />
-                                <ListItem>
+                                {/* <ListItem>
                                     <ListItemPrefix>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                                             <path d="M4.5 3.75a3 3 0 00-3 3v.75h21v-.75a3 3 0 00-3-3h-15z" />
@@ -249,6 +251,17 @@ const DashboardLayout = () => {
 
                                     </ListItemPrefix>
                                     <NavLink to='payment'>Payment</NavLink>
+                                </ListItem> */}
+                                <ListItem>
+                                    <ListItemPrefix>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+                                        </svg>
+
+
+                                    </ListItemPrefix>
+                                    {/* <NavLink to={`history/${user?.email}`}>Payment History</NavLink> */}
+                                    <NavLink to='history'>Payment History</NavLink>
                                 </ListItem>
                                 <ListItem onClick={handleLogOut}>
                                     <ListItemPrefix>
@@ -260,7 +273,7 @@ const DashboardLayout = () => {
                             </List>
                         </Card>
                     </div>
-                    <div className=" w-9/12 mx-5 ps-8 mt-5  border ">
+                    <div className=" w-9/12 mx-5 ps-8 mt-5   ">
                         <Outlet></Outlet>
 
                     </div>

@@ -9,7 +9,7 @@ const StudentHome = () => {
         <div>
             <div className=' text-center mt-24 text-6xl text-white' >Welcome {user.displayName}
                 <div className='h-54 w-36  mx-auto'>
-                    <img className='w-full h-full object-cover' src={user?.photoURL? user.photoURL:person  } alt="" />
+                    <img className='w-full h-full object-cover' src={user?.photoURL ? user.photoURL : person} alt="" />
 
                 </div>
             </div>

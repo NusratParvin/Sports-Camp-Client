@@ -21,22 +21,22 @@ const PopInstructors = () => {
 
 
             <section className="py-6 mt-16 bg-gray-200 dark:bg-gray-800 dark:text-gray-100">
-	<div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
-		<p className="p-2 text-sm font-medium tracking-wider text-center uppercase">Coaching team</p>
-		<h1 className="text-3xl text-black/70 mb-12 font-bold leading-none text-center sm:text-5xl">The talented people behind the scenes</h1>
-		<div className="grid grid-cols-3 justify-center mt-8">
+                <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
+                    <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">Coaching team</p>
+                    <h1 className="text-3xl text-black/70 mb-12 font-bold leading-none text-center sm:text-5xl">The talented people behind the scenes</h1>
+                    <div className="grid grid-cols-3 justify-center mt-8">
 
-                {
-                    popInstructors.map(ins =>
-                        <Fade duration={2000}>
-                            <PopInstructorsCard key={ins._id} instructors={ins} ></PopInstructorsCard>
-                        </Fade>
-                    )
-                }
+                        {
+                            popInstructors.map(ins =>
+                                <Fade duration={2000}>
+                                    <PopInstructorsCard key={ins._id} instructors={ins} ></PopInstructorsCard>
+                                </Fade>
+                            )
+                        }
 
-</div>
-	</div>
-</section>
+                    </div>
+                </div>
+            </section>
 
             {/* </div> */}
 

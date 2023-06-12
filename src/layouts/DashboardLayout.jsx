@@ -20,7 +20,7 @@ const DashboardLayout = () => {
     };
     const selectedClass= cart.filter(cl=>cl.status!=="Paid")
     const enrolledClass= cart.filter(cl=>cl.status==="Paid")
-
+console.log(isRole);
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -97,7 +97,7 @@ const DashboardLayout = () => {
 
                                     </ListItemPrefix>
                                     <Typography color="blue-gray" className="mr-auto font-normal">
-                                        Home
+                                        <NavLink to='/'>Home</NavLink>
                                     </Typography>
                                 </ListItem>
                                 <Accordion
@@ -169,7 +169,8 @@ const DashboardLayout = () => {
                 </div>
             }
             {isRole === 'Student' &&
-                <div className="flex md:justify-between md:flex-row  h-screen">
+            <NavLink to='/studenthome'>
+                 <div className="flex md:justify-between md:flex-row  h-screen">
                     <div>
 
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
@@ -275,12 +276,13 @@ const DashboardLayout = () => {
                     </div>
                     <div className=" w-9/12 mx-5 ps-8 mt-5   ">
                         <Outlet></Outlet>
-
                     </div>
                 </div>
+            </NavLink>
+               
             }
             {isRole === 'Instructor' &&
-                <div className="flex md:justify-between md:flex-row bg-teal-100 h-screen">
+                <div className="flex md:justify-between md:flex-row bg-teal-100 ">
                     <div>
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
                             <div className="mb-2 flex justify-between items-center gap-1 px-2 py-4">
@@ -366,7 +368,7 @@ const DashboardLayout = () => {
                             </List>
                         </Card>
                     </div>
-                    <div className=" w-9/12 mx-5 ps-8 mt-5  border ">
+                    <div className=" w-9/12 mx- ps-4  border ">
                         <Outlet></Outlet>
 
                     </div>

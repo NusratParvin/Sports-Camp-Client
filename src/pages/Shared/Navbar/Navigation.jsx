@@ -12,11 +12,13 @@ import Carousel from "nuka-carousel"
 import image from "../../../assets/sports-academy.jpg"
 import logo from "../../../assets/slider/29655-triathlon.gif"
 import { easeCircleOut, easeElasticOut } from 'd3-ease';
+import useRole from '../../../hooks/useRole';
 
 
 
 const Navigation = () => {
     const { user, logOut } = useAuth()
+    const [isRole] = useRole()
     const [openNav, setOpenNav] = React.useState(false);
 
     useEffect(() => {
@@ -60,9 +62,22 @@ const Navigation = () => {
                 user ?
                     <>
                         <Typography as="li" color="blue-gray" className="p-1 font-normal" >
-                            <NavLink to='/dashboard' className="flex items-center">
+                            {
+                                isRole==='Student' && <NavLink to='/dashboard/studenthome' className="flex items-center">
                                 DashBoard
                             </NavLink>
+                            }
+                            {
+                                isRole==='Instructor' && <NavLink to='/dashboard/instructorhome' className="flex items-center">
+                                DashBoard
+                            </NavLink>
+                            }
+                            {
+                                isRole==='Admin' && <NavLink to='/dashboard/adminhome' className="flex items-center">
+                                DashBoard
+                            </NavLink>
+                            }
+                            
                         </Typography>
                         <Menu>
                             <MenuHandler>

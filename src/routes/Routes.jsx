@@ -16,6 +16,10 @@ import Selected from "../pages/Dashboard/Student/Selected";
 import Enrolled from "../pages/Dashboard/Student/Enrolled";
 import Payment from "../pages/Dashboard/Student/Payment";
 import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory";
+import InstructorRoute from "./InstructorRoute";
+import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome";
+import AllClasses from "../pages/Dashboard/Instructor/AllClasses";
+import AddNew from "../pages/Dashboard/Instructor/AddNew";
 
 
 export const router = createBrowserRouter([
@@ -47,28 +51,40 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path:'/dashboard',
-    element:<PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
-    children:[
+    path: 'dashboard',
+    element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
+    children: [
       {
-        path:'/dashboard',
-        element: <StudentHome></StudentHome>
+        path: 'studenthome',
+        element: <StudentHome></StudentHome> 
       },
       {
-        path:'selected',
+        path: 'selected',
         element: <Selected></Selected>
       },
       {
-        path:'enrolled',
+        path: 'enrolled',
         element: <Enrolled></Enrolled>
       },
       {
-        path:'payment/:id',
+        path: 'payment/:id',
         element: <Payment></Payment>
       },
       {
-        path:'history',
+        path: 'history',
         element: <PaymentHistory></PaymentHistory>
+      },
+      {
+        path:'instructorhome',
+        element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
+      },
+      {
+        path:'allclasses',
+        element: <AllClasses></AllClasses>
+      },
+      {
+        path:'addnew',
+        element: <AddNew></AddNew>
       },
     ]
   }

@@ -368,7 +368,7 @@ console.log(isRole);
                             </List>
                         </Card>
                     </div>
-                    <div className=" w-9/12 mx- ps-4  border ">
+                    <div className=" w-9/12 mx- ps-4 min-h-screen">
                         <Outlet></Outlet>
 
                     </div>

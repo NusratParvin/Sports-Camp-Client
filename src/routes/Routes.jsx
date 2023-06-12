@@ -86,6 +86,7 @@ export const router = createBrowserRouter([
         path:'addnew',
         element: <AddNew></AddNew>
       },
+
     ]
   }
 

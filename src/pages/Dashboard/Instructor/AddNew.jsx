@@ -2,6 +2,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import useAxios from '../../../hooks/useAxios';
+import { useNavigate } from 'react-router-dom';
 
 
 // const img_hosting_token = import.meta.env.VITE_Image_Upload_Token
@@ -9,11 +10,12 @@ import useAxios from '../../../hooks/useAxios';
 const AddNew = () => {
     const { user } = useAuth()
     const [Axios] = useAxios()
+    const navigate = useNavigate()
 
     // const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
 
-    const { register, handleSubmit, watch, formState: { errors }, setValue } = useForm();
+    const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm();
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -30,7 +32,7 @@ const AddNew = () => {
         //         if (imgResponse.success) {
         //             const imgURL = imgResponse.data.display_url;
                     const { name, price, seatsAvailable, email, instructor ,image } = data;
-                    const newClass = { name,image, price: parseFloat(price), seatsAvailable: parseInt(seatsAvailable), instructor };
+                    const newClass = { name,email,image, price: parseFloat(price), seatsAvailable: parseInt(seatsAvailable), instructor };
         console.log(newClass);
 
         //             console.log(newClass);
@@ -39,7 +41,8 @@ const AddNew = () => {
                             console.log('posting new menu class', response.data.insertedId);
                             if (response.data.insertedId) {
                                 toast.success("New class added!");
-                                  reset();
+                                reset();
+                                navigate('/dashboard/allclasses')
                             }
                         })
                         // .catch(error => {
@@ -101,7 +104,7 @@ const AddNew = () => {
                             Instructor Email
                         </label>
                         <input class="appearance-none block w-full bg-gray-200 text-gray-700 text-sm py-3 px-4 leading-tight " readOnly type="email"
-                            defaultValue={user?.email}/>
+                           {...register("email")}   defaultValue={user?.email}/>
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-0 ">

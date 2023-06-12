@@ -49,15 +49,6 @@ const SignUp = () => {
                                 if (data.upsertedCount) {
                                     reset();
                                     toast('Successfully Signed Up!');
-                                    // Swal.fire({
-                                    //     position: 'top-end',
-                                    //     html: '<small className="text-base" style="color: blue; font-size: 14px;">You are already registered with this email!</small>',
-                                    //     showConfirmButton: false,
-                                    //     timer: 1000,
-                                    //     // customClass: {
-                                    //     //   title: 'custom-title',
-                                    //     // },
-                                    //   });
                                     navigate('/');
                                 }
                             })

@@ -20,6 +20,7 @@ import InstructorRoute from "./InstructorRoute";
 import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome";
 import AllClasses from "../pages/Dashboard/Instructor/AllClasses";
 import AddNew from "../pages/Dashboard/Instructor/AddNew";
+import UpdateClass from "../pages/Dashboard/Instructor/UpdateClass";
 
 
 export const router = createBrowserRouter([
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
       {
         path:'addnew',
         element: <AddNew></AddNew>
+      },
+      {
+        path:'update/:id',
+        element: <UpdateClass></UpdateClass>
       },
 
     ]

@@ -36,21 +36,21 @@ const Navigation = () => {
 
     const navList = (
         <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
+            <Typography as="li" color="blue-gray" className="p-1 font-normal" >
                 <NavLink to='/' className="flex items-center">
                     Home
                 </NavLink>
             </Typography>
 
 
-            <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
+            <Typography as="li"  color="blue-gray" className="p-1 font-normal" >
                 <NavLink to='/instructors' className="flex items-center">
                     Instructors
                 </NavLink>
             </Typography>
 
 
-            <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
+            <Typography as="li" color="blue-gray" className="p-1 font-normal" >
                 <NavLink to='/classes' className="flex items-center">
                     Classes
                 </NavLink>
@@ -59,7 +59,7 @@ const Navigation = () => {
             {
                 user ?
                     <>
-                        <Typography as="li" variant="lead" color="blue-gray" className="p-1 font-normal" >
+                        <Typography as="li" color="blue-gray" className="p-1 font-normal" >
                             <NavLink to='/dashboard' className="flex items-center">
                                 DashBoard
                             </NavLink>

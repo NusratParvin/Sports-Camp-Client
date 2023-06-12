@@ -1,20 +1,22 @@
 import { Typography } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
 import logo from '../../../assets/slider/29655-triathlon.gif'
+import bg from '../../../assets/slider/football-3024154_1920.jpg'
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="w-full bg-white p-8">
-            <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
-                <div className="flex border">
-                    <p className=" bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent text-xl font-bold">Sports Camp</p>
-                    <img src={logo} alt="logo-ct" className="w-10" />
+        <footer className="w-full p-16 object-cover  opacity-90" style={{ backgroundImage: `url(${bg})` }} 
+        >
+            <div className="flex flex-col md:flex-row flex-wrap items-center justify-center pb-4 gap-y-6 gap-x-12 bg-transparent text-center md:justify-between">
+                <div className="flex ">
+                    <p className=" bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent text-2xl font-bold">Sports Camp</p>
+                    {/* <img src={logo} alt="logo-ct" className="w-10" /> */}
                 </div>
-                <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+                <ul className="flex flex-wrap md:flex-row flex-col items-center gap-y-2 gap-x-8">
                     <li>
                         <NavLink to='/'>
-                            <Typography color="indigo" className="font-normal transition-colors hover:text-indigo-500 focus:text-indigo-500"
+                            <Typography color="white" className="font-normal transition-colors hover:text-indigo-500 focus:text-indigo-500"
                             >
                                 Home
                             </Typography>
@@ -22,7 +24,7 @@ const Footer = () => {
                     </li>
                     <li>
                         <NavLink to='/classes'>
-                            <Typography color="indigo" className="font-normal transition-colors hover:text-indigo-500 focus:text-indigo-500"
+                            <Typography color="white" className="font-normal transition-colors hover:text-indigo-500 focus:text-indigo-500"
                             >
                                 Classes
                             </Typography>
@@ -30,7 +32,7 @@ const Footer = () => {
                     </li>
                     <li>
                         <NavLink to='/instructors'>
-                            <Typography color="indigo" className="font-normal transition-colors hover:text-deep-purple-900  focus:text-indigo-500"
+                            <Typography color="white" className="font-normal transition-colors hover:text-deep-purple-900  focus:text-indigo-500"
                             >
                                 Instructors
                             </Typography>
@@ -38,7 +40,7 @@ const Footer = () => {
                     </li>
                     <li>
                         <NavLink to='/login'>
-                            <Typography color="indigo" className="font-normal transition-colors hover:text-indigo-500 focus:text-indigo-500"
+                            <Typography color="white" className="font-normal transition-colors hover:text-indigo-500 focus:text-indigo-500"
                             >
                                 Login
                             </Typography>
@@ -50,13 +52,13 @@ const Footer = () => {
 
 
             <div className="flex w-full flex-col items-center justify-center border-t border-indigo-50 py-4 md:flex-row md:justify-between">
-                <Typography variant="small" className="mb-4 text-center font-normal text-indigo-900 md:mb-0"
+                <Typography variant="small" className="mb-4 text-center font-normal text-white/80 md:mb-0"
                 >
-                    &copy; {currentYear} <a href="https://material-tailwind.com/">Sports Camp</a>. All
+                    &copy; {currentYear} <NavLink to="/">Sports Camp</NavLink>. All
                     Rights Reserved.
                 </Typography>
-                <div className="flex gap-4 text-indigo-900 sm:justify-center">
-                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+                <div className="flex flex-col md:flex-row gap-4 text-indigo-900 sm:justify-center">
+                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 text-white/80">
                         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 fill-rule="evenodd"
@@ -66,7 +68,7 @@ const Footer = () => {
                         </svg>
                     </Typography>
 
-                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 text-white/80">
                         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 fill-rule="evenodd"
@@ -76,13 +78,13 @@ const Footer = () => {
                         </svg>
                     </Typography>
 
-                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 text-white/80">
                         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                         </svg>
                     </Typography>
 
-                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 text-white/80">
                         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 fill-rule="evenodd"
@@ -92,7 +94,7 @@ const Footer = () => {
                         </svg>
                     </Typography>
 
-                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100">
+                    <Typography as="a" href="#" className="opacity-80 transition-opacity hover:opacity-100 text-white/80">
                         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 fill-rule="evenodd"

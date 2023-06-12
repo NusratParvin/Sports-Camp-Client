@@ -4,7 +4,6 @@ import { Fade } from 'react-awesome-reveal';
 import PopClassCard from './PopClassCard';
 
 const PopClasses = () => {
-    // const [popClassesData,setPopClassesData] = useState([])
 
     const { data: popClasses = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['popClasses'],
@@ -13,13 +12,13 @@ const PopClasses = () => {
             return res.json();
         }
     })
+    
 
     return (
         <div>
             <div className='w-full mx-auto' >
-
                 <p className=' text-3xl font-bold text-center text-black/70 mb-8 mt-24'>Popular Courses</p>
-                <div className=' grid grid-cols-3 gap-6 mt-10 mb-14 flex-wrap w-10/12 mx-auto'>
+                <div className=' grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 mb-14 flex-wrap w-10/12 mx-auto'>
 
                     {popClasses.slice(0, 6).map(cl => (
                         <Fade duration={2000}>
@@ -27,7 +26,6 @@ const PopClasses = () => {
                         </Fade>
                     ))}
                 </div>
-
             </div>
         </div>
     );

@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Navigation from '../pages/Shared/Navbar/Navigation';
 import { Outlet } from 'react-router-dom';
 import Footer from '../pages/Shared/Footer/Footer';
+import { Switch } from '@material-tailwind/react';
 
 
 const MainLayout = () => {
+    const [darkToggle, setDarkToggle] = useState(false)
+
     return (
-        <div>
+        <div className=''>
+            <div  class={`bg-transparent  ${darkToggle && 'dark'  }`}
+        >
+            <div class="toggleDarkBtn pl-6 relative z-30 w-36 md:left-72 md:top-5 bottom-20  ">
+            <Switch id="gray" color="gray" onClick={() => setDarkToggle(!darkToggle)} className='pb-3 mt-3' />
+            <span className=' pt-12 absolute -top-9 pl-2'>Dark</span>
+                {/* <input type="checkbox" onClick={() => setDarkToggle(!darkToggle)} />
+                <span class="slideBtnTg round"></span> */}
+            </div>
             <Navigation></Navigation>
             <Outlet></Outlet>
             <Footer></Footer>
+        </div>
         </div>
     );
 };

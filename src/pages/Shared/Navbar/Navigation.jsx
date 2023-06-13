@@ -123,7 +123,7 @@ const Navigation = () => {
     );
 
     return (
-        < div className='sticky top-0 z-10 bg-white'>
+        < div className='w-full md:absolute -top-0 z-10 bg-white dark:bg-black'>
             <section className=" seperatorWrapper">
                 <div className="seperatorGradient">
                 </div>

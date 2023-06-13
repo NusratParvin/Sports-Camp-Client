@@ -2,9 +2,15 @@ import React from 'react';
 import PopInstructorsCard from './PopInstructorsCard';
 import { useQuery } from '@tanstack/react-query';
 import { Fade } from 'react-awesome-reveal';
+import classnames from 'classnames';
+
 
 
 const PopInstructors = () => {
+    const componentClasses = classnames('bg-gray-100', 'dark:bg-gray-900');
+    // const className = classNames( redBackgroundClassName);
+
+
 
     const { data: popInstructors = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['popInstructors'],
@@ -15,7 +21,7 @@ const PopInstructors = () => {
     })
     console.log(popInstructors, 'popinstructors');
     return (
-        <div>
+        <div className={componentClasses}>
 
             {/* <div class="bg-gray-200 w-full  flex-row justify-center items-center grid grid-cols-3 gap-3 "> */}
 

@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const ManageUsers = () => {
     const [Axios] = useAxios()
     const [userData, setUserData] = useState([])
-    const [disable,setDisable]=useState(false)
+    const [disable, setDisable] = useState(false)
 
     useEffect(() => {
         Axios('/users')
@@ -63,41 +63,41 @@ const ManageUsers = () => {
 
     const makeInstructor = (user) => {
         Axios.put(`/users/${user._id}`, { role: 'Instructor' })
-          .then(res => {
-            const updatedUserData = userData.map(item => {
-              if (item._id === user._id) {
-                return { ...item, role: 'Instructor', disable:'Instructor' };
-              }
-              return item;
+            .then(res => {
+                const updatedUserData = userData.map(item => {
+                    if (item._id === user._id) {
+                        return { ...item, role: 'Instructor', disable: 'Instructor' };
+                    }
+                    return item;
+                });
+                setUserData(updatedUserData);
+                if (res.data.modifiedCount > 0) {
+                    toast.success(`${user.name} is Instructor now!`);
+                }
+            })
+            .catch(err => {
+                console.log(err);
             });
-            setUserData(updatedUserData);
-            if (res.data.modifiedCount > 0) {
-              toast.success(`${user.name} is Instructor now!`);
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      };
-    
-      const makeAdmin = (user) => {
+    };
+
+    const makeAdmin = (user) => {
         Axios.put(`/users/${user._id}`, { role: 'Admin' })
-          .then(res => {
-            const updatedUserData = userData.map(item => {
-              if (item._id === user._id) {
-                return { ...item, role: 'Admin', disable: 'Admin' };
-              }
-              return item;
+            .then(res => {
+                const updatedUserData = userData.map(item => {
+                    if (item._id === user._id) {
+                        return { ...item, role: 'Admin', disable: 'Admin' };
+                    }
+                    return item;
+                });
+                setUserData(updatedUserData);
+                if (res.data.modifiedCount > 0) {
+                    toast.success(`${user.name} is Admin now!`);
+                }
+            })
+            .catch(err => {
+                console.log(err);
             });
-            setUserData(updatedUserData);
-            if (res.data.modifiedCount > 0) {
-              toast.success(`${user.name} is Admin now!`);
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      };
+    };
 
 
     return (
@@ -160,34 +160,29 @@ const ManageUsers = () => {
 
 
                                     <td class="px-4 py-3 text-sm border flex gap-3">
-                                        {/* <Button disabled={disable} onClick={() => makeInstructor(singleUser)}
-                                            size="sm" variant='outlined' color='red' className='px-2'
-                                        >Admin</Button>
-                                        <Button disabled={disable} onClick={() => makeAdmin(singleUser)} 
-                                            size="sm" variant='outlined' color='green'  className='px-2 mr-2'>Instructor</Button> */}
-
-{singleUser.disable==='Admin' ? (
-                      <Button disabled onClick={() => makeAdmin(singleUser)} size="sm" variant="outlined" color="red" className="px-2" >
-                        Admin
-                      </Button>
-                    ):
-                    (
-                        <Button onClick={() => makeAdmin(singleUser)} size="sm" variant="outlined" color="red" className="px-2" >
-                        Admin
-                      </Button> 
-                    )
-                }
-                    {singleUser.disable==='Instructor' ? (
-                      <Button disabled onClick={() => makeInstructor(singleUser)} size="sm"  variant="outlined"  color="green"  className="px-2 mr-2" >
-                        Instructor
-                      </Button>
-                    ):
-                    (
-                        <Button onClick={() => makeInstructor(singleUser)} size="sm"  variant="outlined"  color="green"  className="px-2 mr-2" >
-                          Instructor
-                        </Button>
-                      )
-                    }
+                                        
+                                        {singleUser.disable === 'Admin' ? (
+                                            <Button disabled onClick={() => makeAdmin(singleUser)} size="sm" variant="outlined" color="red" className="px-2" >
+                                                Admin
+                                            </Button>
+                                        ) :
+                                            (
+                                                <Button onClick={() => makeAdmin(singleUser)} size="sm" variant="outlined" color="red" className="px-2" >
+                                                    Admin
+                                                </Button>
+                                            )
+                                        }
+                                        {singleUser.disable === 'Instructor' ? (
+                                            <Button disabled onClick={() => makeInstructor(singleUser)} size="sm" variant="outlined" color="green" className="px-2 mr-2" >
+                                                Instructor
+                                            </Button>
+                                        ) :
+                                            (
+                                                <Button onClick={() => makeInstructor(singleUser)} size="sm" variant="outlined" color="green" className="px-2 mr-2" >
+                                                    Instructor
+                                                </Button>
+                                            )
+                                        }
                                     </td>
                                 </tr>
                             ))}

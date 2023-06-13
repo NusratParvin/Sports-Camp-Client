@@ -150,7 +150,7 @@ console.log(isRole);
             }
             {isRole === 'Student' &&
             // <NavLink to='/studenthome'>
-                 <div className="flex md:justify-between md:flex-row  bg-indigo-100 h-screen">
+                 <div className="flex md:justify-between md:flex-row  bg-indigo-100 min-h-screen">
                     <div>
 
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
@@ -262,7 +262,7 @@ console.log(isRole);
                
             }
             {isRole === 'Instructor' &&
-                <div className="flex md:justify-between md:flex-row bg-teal-100 ">
+                <div className="flex md:justify-between md:flex-row bg-teal-100 min-h-screen">
                     <div>
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
                             <div className="mb-2 flex justify-between items-center gap-1 px-2 py-4">

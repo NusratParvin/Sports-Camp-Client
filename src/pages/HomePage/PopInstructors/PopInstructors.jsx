@@ -30,7 +30,7 @@ const PopInstructors = () => {
                 <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
                     <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">Coaching team</p>
                     <h1 className="text-3xl text-black/70 mb-12 font-bold leading-none text-center sm:text-5xl">The talented people behind the scenes</h1>
-                    <div className="grid grid-cols-3 justify-center mt-8">
+                    <div className="grid md:grid-cols-3 grid-cols-1 justify-center  mt-8">
 
                         {
                             popInstructors.map(ins =>

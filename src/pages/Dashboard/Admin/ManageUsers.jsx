@@ -102,7 +102,9 @@ const ManageUsers = () => {
 
     return (
 
-        <section class="container mx-auto p-6 font-mono">
+        <section class="container mx-auto p-2 font-mono">
+                        <h2 className="mb-4 text-2xl font-semibold leading text-center text-black/70">Classes</h2>
+
             <div class="w-full mb-8 overflow-hidden shadow-lg">
                 <div class="w-full ">
                     <table class="w-full">

@@ -31,7 +31,7 @@ const Classes = () => {
 
                 {classes.map(cl => (
                     <Fade duration={2000}>
-                    <ClassesCard key={cl._id} data={cl}></ClassesCard>
+                    <ClassesCard key={cl._id} data={cl} ></ClassesCard>
                     </Fade>
                 ))}
             </div>

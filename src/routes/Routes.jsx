@@ -21,6 +21,10 @@ import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome";
 import AllClasses from "../pages/Dashboard/Instructor/AllClasses";
 import AddNew from "../pages/Dashboard/Instructor/AddNew";
 import UpdateClass from "../pages/Dashboard/Instructor/UpdateClass";
+import AdminRoute from "./AdminRoute";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome";
+import ManageClasses from "../pages/Dashboard/Admin/ManageClasses";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 
 
 export const router = createBrowserRouter([
@@ -57,7 +61,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'studenthome',
-        element: <StudentHome></StudentHome> 
+        element: <StudentHome></StudentHome>
       },
       {
         path: 'selected',
@@ -76,20 +80,33 @@ export const router = createBrowserRouter([
         element: <PaymentHistory></PaymentHistory>
       },
       {
-        path:'instructorhome',
+        path: 'instructorhome',
         element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
       },
       {
-        path:'allclasses',
+        path: 'allclasses',
         element: <AllClasses></AllClasses>
       },
       {
-        path:'addnew',
+        path: 'addnew',
         element: <AddNew></AddNew>
       },
       {
-        path:'update/:id',
+        path: 'update/:id',
         element: <UpdateClass></UpdateClass>
+      },
+      {
+        path: 'adminhome',
+        element: <AdminRoute><AdminHome></AdminHome> </AdminRoute>
+      },
+      {
+        path: 'manageclasses',
+        element: <ManageClasses></ManageClasses>
+
+      },
+      {
+        path: 'manageusers',
+        element: <ManageUsers></ManageUsers>
       },
 
     ]

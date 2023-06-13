@@ -4,7 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useRole from "../../hooks/useRole";
 
 
 const ClassesCard = ({ data }) => {
@@ -13,13 +14,19 @@ const ClassesCard = ({ data }) => {
     const redBackgroundClassName = seatsAvailable == 0 ? 'bg-red-300 ' : '';
     const className = classNames(existingClassNames, redBackgroundClassName);
     const [buttonDisabled, setButtonDisabled] = useState(false);
+    // const []
 
     const { user } = useAuth()
     const [, refetch] = useCart()
     const location = useLocation()
     const navigate = useNavigate()
+    const [isRole] = useRole()
 
-
+useEffect(()=>{
+    if(isRole!=="Student"){
+        setButtonDisabled(true);
+    }
+},[])
     const handleAddToCart = classData => {
         console.log(classData);
 
@@ -36,8 +43,7 @@ const ClassesCard = ({ data }) => {
                         refetch();
                         toast.success(`${classData.name} added to your cart !`)
                         setButtonDisabled(true);
-
-                    }
+                                            }
                 })
         }
         else {

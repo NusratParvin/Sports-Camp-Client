@@ -34,7 +34,7 @@ console.log(isRole);
         // <div className="flex md:justify-between md:flex-row bg-indigo-100 h-screen">
         <div>
             {isRole === 'Admin' &&
-                <div className="flex md:justify-between md:flex-row bg-indigo-100 h-screen">
+                <div className="flex md:justify-between md:flex-row bg-cyan-200 min-h-screen">
                     <div>
 
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
@@ -100,18 +100,9 @@ console.log(isRole);
                                         <NavLink to='/'>Home</NavLink>
                                     </Typography>
                                 </ListItem>
-                                <Accordion
-                                    open={open === 2}
-                                    icon={
-                                        <ChevronDownIcon
-                                            strokeWidth={2.5}
-                                            className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""}`}
-                                        />
-                                    }
-                                >
-                                    <ListItem className="p-0" selected={open === 2}>
-                                        <AccordionHeader onClick={() => handleOpen(2)} className="border-b-0 p-3">
-                                            <ListItemPrefix>
+
+                                <ListItem>
+                                <ListItemPrefix>
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                                     <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 007.5 12.174v-.224c0-.131.067-.248.172-.311a54.614 54.614 0 014.653-2.52.75.75 0 00-.65-1.352 56.129 56.129 0 00-4.78 2.589 1.858 1.858 0 00-.859 1.228 49.803 49.803 0 00-4.634-1.527.75.75 0 01-.231-1.337A60.653 60.653 0 0111.7 2.805z" />
                                                     <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.832 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 00-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.661a6.729 6.729 0 00.551-1.608 1.5 1.5 0 00.14-2.67v-.645a48.549 48.549 0 013.44 1.668 2.25 2.25 0 002.12 0z" />
@@ -119,39 +110,28 @@ console.log(isRole);
                                                 </svg>
 
                                             </ListItemPrefix>
-                                            <Typography color="blue-gray" className="mr-auto font-normal">
-                                                My Classes
-                                            </Typography>
-                                        </AccordionHeader>
-                                    </ListItem>
-                                    <AccordionBody className="py-1">
-                                        <List className="p-0">
-                                            <ListItem>
-                                                <ListItemPrefix>
-                                                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                                                </ListItemPrefix>
-                                                <NavLink to='selected'>Selected</NavLink>
-                                            </ListItem>
-                                            <ListItem>
-                                                <ListItemPrefix>
-                                                    <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                                                </ListItemPrefix>
-                                                <NavLink to='enrolled'>Enrolled</NavLink>
-                                            </ListItem>
-                                        </List>
-                                    </AccordionBody>
-                                </Accordion>
-                                <hr className="my-2 border-dashed border-indigo-200" />
+                                    <Typography color="blue-gray" className="mr-auto font-normal">
+                                        <NavLink to='manageclasses'>Classes</NavLink>
+                                    </Typography>
+                                </ListItem>
+
                                 <ListItem>
                                     <ListItemPrefix>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                                            <path d="M4.5 3.75a3 3 0 00-3 3v.75h21v-.75a3 3 0 00-3-3h-15z" />
-                                            <path fillRule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 003 3h15a3 3 0 003-3v-7.5zm-18 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5h-6a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" clipRule="evenodd" />
-                                        </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+  <path fillRule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clipRule="evenodd" />
+  <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
+</svg>
+
 
                                     </ListItemPrefix>
-                                    <NavLink to='payment'>Payment</NavLink>
+                                    <Typography color="blue-gray" className="mr-auto font-normal">
+                                        <NavLink to='manageusers'>Users</NavLink>
+                                    </Typography>
                                 </ListItem>
+                               
+
+                                <hr className="my-2 border-dashed border-indigo-200" />
+                                
                                 <ListItem onClick={handleLogOut}>
                                     <ListItemPrefix>
 
@@ -162,15 +142,15 @@ console.log(isRole);
                             </List>
                         </Card>
                     </div>
-                    <div className=" w-9/12 mx-5 ps-8 mt-5  border ">
+                    <div className=" w-9/12 mx-5 ps-8 mt-5 ">
                         <Outlet></Outlet>
 
                     </div>
                 </div>
             }
             {isRole === 'Student' &&
-            <NavLink to='/studenthome'>
-                 <div className="flex md:justify-between md:flex-row  h-screen">
+            // <NavLink to='/studenthome'>
+                 <div className="flex md:justify-between md:flex-row  bg-indigo-100 h-screen">
                     <div>
 
                         <Card className=" fixed top-4 left-4 h-[calc(100vh-2rem)] w-min  max-w-[20rem] py-4 px-2 shadow-xl shadow-blue-gray-900/5">
@@ -278,7 +258,7 @@ console.log(isRole);
                         <Outlet></Outlet>
                     </div>
                 </div>
-            </NavLink>
+            // </NavLink>
                
             }
             {isRole === 'Instructor' &&

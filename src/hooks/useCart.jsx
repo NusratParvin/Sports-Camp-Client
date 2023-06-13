@@ -12,7 +12,7 @@ const useCart = () => {
         enabled: !loading,
         queryFn: async () => {
             const res = await Axios(`/cart?email=${user?.email}`)
-            console.log(' mycart', res)
+            // console.log(' mycart', res)
             return res.data;
         },
     })

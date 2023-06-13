@@ -1,24 +1,21 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import useAxios from '../../../hooks/useAxios';
 import useAuth from '../../../hooks/useAuth';
-// import InsClassCard from './InsClassCard';
 import {
-    
-    Dialog,
     Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Input,
-    
-  } from "@material-tailwind/react";
-
-import {
     Button,
-
+    Dialog,
+    DialogHeader,
+    DialogBody,
+    DialogFooter,
+    Typography,
 } from "@material-tailwind/react";
-import { NavLink,  } from 'react-router-dom';
+import {
+    ArrowLongRightIcon
+} from "@heroicons/react/24/outline";
+
+// import { Button} from "@material-tailwind/react";
+import { NavLink, } from 'react-router-dom';
 
 
 const TABLE_HEAD = ["#", "Class Name", "Price", "Seats", "Enrolled", "Status", "Feedback", "Action"];
@@ -26,6 +23,9 @@ const TABLE_HEAD = ["#", "Class Name", "Price", "Seats", "Enrolled", "Status", "
 
 
 const AllClasses = () => {
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => setOpen(!open);
 
     const [Axios] = useAxios()
     const { user } = useAuth()
@@ -40,9 +40,6 @@ const AllClasses = () => {
     }, [Axios])
 
     console.log(myClasses);
-
-
-
 
 
     return (
@@ -106,14 +103,37 @@ const AllClasses = () => {
                                             </Typography>
                                         </td>
                                         <td className={classes}>
-                                            <Typography variant="small" color={status === 'Approved' ? 'green' : status === 'Pending' ? 'amber' : item.status === 'Denied' ? 'red' : 'blue-gray'} className="text-center ">
+                                            <Typography variant="small" color={item.status === 'Approved' ? 'green' : item.status === 'Pending' ? 'amber' : item.status === 'Denied' ? 'red' : 'blue-gray'} className="text-center ">
                                                 {item.status}
                                             </Typography>
                                         </td>
                                         <td className={classes}>
-                                            <Typography variant="small" color="blue-gray" className=" text-center">
-                                                {item.feedback}
-                                            </Typography>
+                                            <Button size='sm' variant='text' onClick={handleOpen}>
+                                                Read
+                                            </Button>
+
+                                        
+                                            <Dialog open={open} handler={handleOpen}>
+                                                <DialogHeader>
+                                                    <Typography variant="h5" color="blue-gray">
+                                                        Your Attention is Required!
+                                                    </Typography>
+                                                </DialogHeader>
+                                                <DialogBody divider className="grid place-items-center gap-4">
+                                                   
+                                                    <Typography className="text-center font-normal">
+                                                        {item.feedback? item.feedback : "No feedback found!"}
+                                                    </Typography>
+                                                </DialogBody>
+                                                <DialogFooter className="space-x-2">
+                                                    {/* <Button variant="text" color="blue-gray" onClick={handleOpen}>
+                                                        close
+                                                    </Button> */}
+                                                    <Button variant="gradient" onClick={handleOpen}>
+                                                        Ok, Got it
+                                                    </Button>
+                                                </DialogFooter>
+                                            </Dialog>
                                         </td>
                                         <td className={classes}>
                                             <Typography variant="small" className="font-medium">
@@ -124,15 +144,8 @@ const AllClasses = () => {
                                                         </svg>
 
                                                     </Button>
-                                                    </NavLink>
-                                                    {/* <UpdateClass open={open} handler={handleOpen} classInfo= {item }></UpdateClass> */}
-
-
-            
-                                                  
-
-
-                                                   
+                                                </NavLink>
+                                               
                                             </Typography>
                                         </td>
                                     </tr>

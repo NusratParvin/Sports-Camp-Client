@@ -56,9 +56,9 @@ const AddNew = () => {
     // }
     return (
         <div className='text-black  mx-auto mt-0 p-0 '>
-            <h1 className='text-xl font-bold text-black/70 text-center pt-4 pb-0 mb-0 '>Add new Class</h1>
+            <h1 className='text-xl font-bold text-black/70 text-center pt-4 pb-0 mb-6 '>Add new Class</h1>
 
-            <form class="w-full border" onSubmit={handleSubmit(onSubmit)} >
+            <form class="w-full border  -mt-1" onSubmit={handleSubmit(onSubmit)} >
 
                 <div class="flex flex-wrap -mx-3 mb-3 ">
                     <div class="w-full px-3 ">

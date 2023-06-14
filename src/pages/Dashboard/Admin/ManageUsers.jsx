@@ -155,7 +155,7 @@ const ManageUsers = () => {
                                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">{singleUser.role}</span>
                                     </td> */}
 
-                                    <td class="px-4 py-3 text-xs border">
+                                    <td class="px-4 py-3 text-xs ">
                                         {singleUser.role === 'Student' && (
                                             <span class="px-2 py-1 font-semibold leading-tight text-blue-700 bg-blue-100 rounded-sm">
                                                 {singleUser.role}
@@ -174,7 +174,7 @@ const ManageUsers = () => {
                                     </td>
 
 
-                                    <td class="px-4 py-3 text-sm border flex gap-3">
+                                    <td class="px-4 py-3 text-sm  flex gap-3">
 
                                         {singleUser.disable === 'Admin' ? (
                                             <Button disabled onClick={() => makeAdmin(singleUser)} size="sm" variant="outlined" color="red" className="px-2" >

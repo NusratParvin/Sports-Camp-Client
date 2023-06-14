@@ -15,7 +15,7 @@ const PopInstructors = () => {
     const { data: popInstructors = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['popInstructors'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/popInstructors');
+            const res = await fetch('https://summer-camp-server-ten-taupe.vercel.app/popInstructors');
             return res.json();
         }
     })
@@ -27,7 +27,7 @@ const PopInstructors = () => {
 
 
             <section className="py-6 mt-16 bg-gray-200 dark:bg-gray-800 dark:text-gray-100">
-                <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
+                <div className="container flex flex-col items-center justify-center md:p-4 mx-auto ">
                     <p className="p-2 text-sm font-medium tracking-wider text-center uppercase">Coaching team</p>
                     <h1 className="text-3xl text-black/70 mb-12 font-bold leading-none text-center sm:text-5xl">The talented people behind the scenes</h1>
                     <div className="grid md:grid-cols-3 grid-cols-1 justify-center  mt-8">

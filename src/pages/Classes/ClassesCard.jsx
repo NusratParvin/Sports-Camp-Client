@@ -75,7 +75,7 @@ const ClassesCard = ({ data }) => {
                 email: user.email,
                 status:"Not Paid"
             };
-            fetch('http://localhost:5000/cart', {
+            fetch('https://summer-camp-server-ten-taupe.vercel.app/cart', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(cartItem),

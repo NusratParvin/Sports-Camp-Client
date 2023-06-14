@@ -8,7 +8,7 @@ const PopClasses = () => {
     const { data: popClasses = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['popClasses'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/popClasses');
+            const res = await fetch('https://summer-camp-server-ten-taupe.vercel.app/popClasses');
             return res.json();
         }
     })

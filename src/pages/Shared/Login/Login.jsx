@@ -46,7 +46,7 @@ const Login = () => {
                     role: "Student"
                 }
                 console.log(user, 'user');
-                fetch(`http://localhost:5000/users/${loggedInUser.email}`, {
+                fetch(`https://summer-camp-server-ten-taupe.vercel.app/users/${loggedInUser.email}`, {
                     method: 'PUT',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(user)

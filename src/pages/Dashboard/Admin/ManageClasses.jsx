@@ -37,49 +37,47 @@ const handleClose = () => {
   setOpen(false);
 };
 
-
-    const { refetch, data, isLoading } = useQuery({
-        queryKey: ['classes'],
-        // enabled: !loading,
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classes/admin')
-            const data = await res.json();
-            setClasses(data.map((cl) => ({ ...cl, disabled: false })))
-
-            return classes;
-        },
-
-    })
-    console.log(classes, 'classes');
-
-
-    const handleApprove = (data) => {
-        if (data.status === "Denied" || "Pending") {
-            Axios.put(`/classes/${data._id}`, { status: 'Approved' })
-                .then(res => {
-                    const updatedClasses = classes.map((cl) => {
-                        if (cl._id === data._id) {
-                            return { ...cl, status: 'Approved', disabled: true };
-                        }
-                        return cl;
-                    });
-
-                    setClasses(updatedClasses);
-
-                    if (res.data.modifiedCount > 0) {
-                        toast.success(`${data.name} is approved!`);
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        }
-        else {
-            toast.warning(`${data.name} is already approved!`);
-        }
-
-
+useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await Axios.get('https://summer-camp-server-ten-taupe.vercel.app/classes/admin');
+        const data = res.data;
+        setClasses(data.map((cl) => ({ ...cl, disabled: false })));
+      } catch (error) {
+        console.error(error);
+      }
     };
+  
+    fetchData();
+  }, []);
+
+
+  const handleApprove = (data) => {
+    console.log(data.status);
+    if (data.status === "Denied" || data.status === "Pending") {
+      Axios.put(`/classes/${data._id}`, { status: 'Approved' })
+        .then(res => {
+          const updatedClasses = classes.map((cl) => {
+            if (cl._id === data._id) {
+              return { ...cl, status: 'Approved', disabled: true };
+            }
+            return cl;
+          });
+  
+          setClasses(updatedClasses);
+  
+          if (res.data.modifiedCount > 0) {
+            toast.success(`${data.name} is approved!`);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else if (data.status === "Approved") {
+      console.log('clicked app');
+      toast.warning(`${data.name} is already approved!`);
+    }
+  };
 
     const handleSendFeedback = () => {
         console.log(feedbackData, selectedRow._id);
@@ -96,33 +94,33 @@ const handleClose = () => {
    
 handleClose()
     };
-    const handleDeny = (data) => {
-        if (data.status === "Approved" || "Pending") {
-            Axios.put(`/classes/${data._id}`, { status: 'Denied' })
-                .then(res => {
-                    const updatedClasses = classes.map((cl) => {
-                        if (cl._id === data._id) {
-                            return { ...cl, status: 'Denied', disabled: true };
-                        }
-                        return cl;
-                    });
 
-                    setClasses(updatedClasses);
 
-                    if (res.data.modifiedCount > 0) {
-                        toast.success(`${data.name} is denied!`);
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+const handleDeny = (data) => {
+  if (data.status === "Approved" || data.status === "Pending") {
+    Axios.put(`/classes/${data._id}`, { status: 'Denied' })
+      .then(res => {
+        const updatedClasses = classes.map((cl) => {
+          if (cl._id === data._id) {
+            return { ...cl, status: 'Denied', disabled: true };
+          }
+          return cl;
+        });
+
+        setClasses(updatedClasses);
+
+        if (res.data.modifiedCount > 0) {
+          toast.success(`${data.name} is denied!`);
         }
-        else {
-            toast.warning(`${data.name} is already denied!`);
-        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  } else {
+    toast.warning(`${data.name} is already denied!`);
+  }
+};
 
-
-    };
 
     return (
         <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">

@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 import axios from 'axios';
 
 const Axios = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://summer-camp-server-ten-taupe.vercel.app',
 });
 
 

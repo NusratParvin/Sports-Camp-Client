@@ -40,7 +40,7 @@ const SignUp = () => {
                         }
                         console.log(newUser, 'newUser');
                        
-                        fetch('http://localhost:5000/users',{
+                        fetch('https://summer-camp-server-ten-taupe.vercel.app/users',{
                             method:'POST',
                             headers:{'content-type':'application/json'},
                             body: JSON.stringify(newUser)

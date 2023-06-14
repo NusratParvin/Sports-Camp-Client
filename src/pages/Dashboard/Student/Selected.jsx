@@ -23,7 +23,7 @@ const Selected = () => {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        fetch(`http://localhost:5000/cart/${id}`, {
+                        fetch(`https://summer-camp-server-ten-taupe.vercel.app/cart/${id}`, {
                             method: 'DELETE'
                         })
                             .then(res => res.json())

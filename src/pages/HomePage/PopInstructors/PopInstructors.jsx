@@ -12,7 +12,7 @@ const PopInstructors = () => {
 
 
 
-    const { data: popInstructors = [], isLoading: loading, refetch } = useQuery({
+    const { data: popInstructors = [], isLoading: loading } = useQuery({
         queryKey: ['popInstructors'],
         queryFn: async () => {
             const res = await fetch('https://summer-camp-server-ten-taupe.vercel.app/popInstructors');

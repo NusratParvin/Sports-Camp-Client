@@ -5,7 +5,7 @@ import PopClassCard from './PopClassCard';
 
 const PopClasses = () => {
 
-    const { data: popClasses = [], isLoading: loading, refetch } = useQuery({
+    const { data: popClasses = [], isLoading: loading } = useQuery({
         queryKey: ['popClasses'],
         queryFn: async () => {
             const res = await fetch('https://summer-camp-server-ten-taupe.vercel.app/popClasses');

@@ -20,26 +20,8 @@ const ClassesCard = ({ data }) => {
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
     const { user } = useAuth()
-    const location = useLocation()
-    const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     if (isRole !== "Student") {
-    //         setButtonDisabled(true);
-    //     } else {
-    //         setButtonDisabled(false);
-    //     }
-    // }, []);
-
-
-    // useEffect(() => {
-    //     if (seatsAvailable ===0) {
-    //         setButtonDisabled(true);
-    //     }
-    //     else{
-    //         setButtonDisabled(false)
-    //     }
-    // }, [data])
+    
     useEffect(() => {
         if (seatsAvailable <= 0 || isRole === "Admin" || isRole === "Instructor") {
           setButtonDisabled(true);
@@ -48,22 +30,7 @@ const ClassesCard = ({ data }) => {
         }
       }, [seatsAvailable, isRole]);
     
-      const handleSelectCourse = () => {
-        if (isAuthenticated) {
-          // User is logged in, proceed with selecting the course
-          // Add your logic here
-          // Example: navigate to a specific page or perform an action
-        } else {
-          // User is not logged in, display a toast or navigate to the login page
-          toast.error("Please log in to select the course");
-          navigate("/login");
-        }
-      };
-    
 
-    const handleUser = () => { 
-        toast("login first")
-    setButtonDisabled(true) }
     const handleAddToCart = classData => {
         if (user && user.email) {
             const cartItem = {

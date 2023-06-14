@@ -42,7 +42,7 @@ const handleClose = () => {
         queryKey: ['classes'],
         // enabled: !loading,
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classes')
+            const res = await fetch('http://localhost:5000/classes/admin')
             const data = await res.json();
             setClasses(data.map((cl) => ({ ...cl, disabled: false })))
 
@@ -97,7 +97,7 @@ const handleClose = () => {
 handleClose()
     };
     const handleDeny = (data) => {
-        if (data.status === "Approved") {
+        if (data.status === "Approved" || "Pending") {
             Axios.put(`/classes/${data._id}`, { status: 'Denied' })
                 .then(res => {
                     const updatedClasses = classes.map((cl) => {
@@ -126,7 +126,11 @@ handleClose()
 
     return (
         <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
-            <h2 className="-mt-4 pb-4 text-2xl font-semibold leading text-center text-black/70">Classes</h2>
+            <div className='pb-4 text-center'>
+               <h2 className="-mt-4  text-2xl font-semibold leading  text-black/70">Classes</h2>
+            <small>{classes?.length} data found</small> 
+            </div>
+            
             <div className="overflow-x-auto">
                 <table className="min-w-full text-xs bg-white/80 px-4">
                     <colgroup>
@@ -199,25 +203,7 @@ handleClose()
 
                                     <td className="p-3 text-right">
                                         <span className="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900 flex justify-between gap-4 items-center">
-                                            {/* <IconButton
-                                    disabled={disabledButtons[cl._id]} // Disable Button 1 for specific data
-                                    onClick={() => { handleApprove(cl); }}
-                                    size="sm"
-                                    variant="text"
-                                    className='w-4 h-4'
-                                    color='teal'
-                                >ap
-                                </IconButton>
-                                <IconButton
-                                    disabled={disabledButtons[cl._id]} // Disable Button 2 for specific data
-                                    onClick={() => { handleDeny(cl); }}
-                                    size="sm"
-                                    variant="text"
-                                    className='w-4 h-4'
-                                    color='red'
-                                >den
-                                </IconButton> */}
-
+                                           
                                             <IconButton disabled={cl.disabled} onClick={() => handleApprove(cl)} size="sm" variant="text" className='w-4 h-4'  color='teal'
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
@@ -239,27 +225,6 @@ handleClose()
                                                 </svg>
 
                                             </IconButton>
-                                            {/* <Dialog open={open} onClose={handleClose}>
-  <div className="flex items-center justify-between">
-    <DialogHeader>{cl.name}</DialogHeader>
-    <XMarkIcon className="mr-3 h-5 w-5" onClick={handleClose} />
-  </div>
-  <DialogBody divider>
-    <div className="grid gap-6">
-      <Textarea
-        label="Message"
-        value={feedbackData}
-        onChange={(e) => setFeedbackData(e.target.value)}
-      />
-    </div>
-  </DialogBody>
-  <DialogFooter className="space-x-2">
-    <Button variant="gradient" color="green" onClick={handleSendFeedback}>
-      Send
-    </Button>
-  </DialogFooter>
-</Dialog> */}
-
 
 <Dialog open={open} onClose={handleClose}>
         <div className="flex items-center justify-between">

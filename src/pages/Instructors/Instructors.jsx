@@ -15,7 +15,7 @@ const Instructors = () => {
 
     return (
         <div >
-            <div className='md:w-full w-screen h-[500px] relative mb-24'>
+            <div className='md:w-full w-screen h-[500px] relative mb-24 '>
                 <Fade className='h-full w-full' duration={1500} >
                     <img className='h-full w-full object-cover object-center' src="https://images.unsplash.com/photo-1526494661200-9d7cfd4b2404?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="" />
                 </Fade>
@@ -27,7 +27,7 @@ const Instructors = () => {
 
             </div>
 
-            <div className=' bg-blue-100  py-6'>
+            <div className=' bg-blue-100 dark:bg-gray-900 dark:text-white/70  py-6'>
                 <div className=' grid md:grid-cols-3 grid-cols-1 gap-7 mx-12 mt-10 mb-14 flex-wrap'>
 
                     {instructors.map(ins => (

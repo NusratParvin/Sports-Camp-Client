@@ -7,12 +7,14 @@ const Enrolled = () => {
     const [cart, refetch] = useCart()
     
     const enrolledClass= cart.filter(cl=>cl.status==="Paid")
+    console.log(enrolledClass[0],'status');
 
     return (
         <div className="w-4/5 mx-auto">
 
-            <div className="text-center text-gray-800 text-2xl py-5">
-                <p>Enrolled Classes</p>
+<div className='py-4 text-center'>
+               <h2 className="-mt-4  text-2xl font-semibold leading  text-black/70">Enrolled Classes</h2>
+            <small>{enrolledClass?.length} booked for you</small> 
             </div>
 
             {enrolledClass.length!==0 ?

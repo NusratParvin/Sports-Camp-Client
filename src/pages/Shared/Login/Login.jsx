@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
+    const [error, setError] = useState('')
 
     const handleLogIn = (data) => {
         console.log(data);
@@ -18,44 +20,58 @@ const Login = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                toast('🦄 Login Successfull!');
+                // toast('Login Successfull!');
                 navigate(from, { replace: true });
             })
-            .catch(error => console.log(error))
+            .catch(err => {
+                if (err.code === "auth/user-not-found") {
+                    setError("You are not registered!")
+                }
+                else {
+                    setError(err.code)
+                }
+                console.log(error);
+            })
     }
 
-    const handleGoogleSignIn = () =>{
+    const handleGoogleSignIn = () => {
         googleSignIn()
-        .then(res=>{
-            console.log(res.user);
-            const loggedInUser = res.user
-            const user ={ 
-                name: loggedInUser.displayName,
-                 email:loggedInUser.email,
-                 photoURL:loggedInUser.photoURL,
-                 role:"Student"
+            .then(res => {
+                console.log(res.user);
+                const loggedInUser = res.user
+                const user = {
+                    name: loggedInUser.displayName,
+                    email: loggedInUser.email,
+                    photoURL: loggedInUser.photoURL,
+                    role: "Student"
                 }
-                        console.log(user,'user');
-                        fetch(`http://localhost:5000/users/${loggedInUser.email}`,{
-                            method:'PUT',
-                            headers:{'content-type':'application/json'},
-                            body: JSON.stringify(user)
-                        })
-                            .then(res => res.json())
-                            .then(data => {
-                                toast('Your Gmail Login is Successfull!');
-                                    navigate(from,{replace:true});
-                                
-                            })
-        })
-        .catch(err=>{
-            console.log(err);
-        })
+                console.log(user, 'user');
+                fetch(`http://localhost:5000/users/${loggedInUser.email}`, {
+                    method: 'PUT',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        toast('Your Gmail Login is Successful!');
+                        navigate(from, { replace: true });
+
+                    })
+            })
+            .catch(err => {
+                if (err.code === "auth/user-not-found") {
+                    setError("You are not registered!")
+                }
+                else {
+                    setError(err.code)
+                }
+                console.log(error);
+            })
     }
 
     return (
 
-        <div className="flex items-center  bg-gray-50">
+        <div className="flex items-center  ">
             <div className="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-3xl ">
                 <div className="flex flex-col md:flex-row">
                     <div className=" h-32 md:h-auto md:w-1/2">
@@ -90,14 +106,15 @@ const Login = () => {
                                     </label>
                                     <input type="password" className="appearance-none border pl-2 border-gray-100 shadow-sm focus:shadow-md transition rounded-md w-full py-2 text-sm text-gray-800 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline" {...register("password", { required: true })} placeholder="Your Password" />
                                 </div>
-                                <p className="mt-4 text-sm text-indigo-600 hover:underline" href="./forgot-password.html">
-                                    Forgot your password?
 
-                                </p>
+
+                                {error &&
+                                    <small className="mt-4 text-sm text-red-600 ">{error}</small>
+                                }
+
                                 <button className="block w-full px-4 py-2 mt-4 text-sm leading-5 text-center text-white transition-colors duration-150 bg-indigo-600 border border-transparent rounded-lg active:bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:shadow-outline-indigo uppercase font-bold">Log in</button>
                             </form>
                             <hr className="my-4" />
-
 
                             <div className="flex items-center justify-center gap-4">
                                 {/* <button disabled

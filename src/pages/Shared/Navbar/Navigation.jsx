@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Navbar, Typography, Button, IconButton, Card, Collapse, Slider, } from "@material-tailwind/react";
+import { Navbar, Typography, Button, IconButton, Card, Collapse, Slider, Switch, } from "@material-tailwind/react";
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
@@ -16,10 +16,15 @@ import useRole from '../../../hooks/useRole';
 
 
 
-const Navigation = () => {
+const Navigation = ({ theme, setTheme }) => {
     const { user, logOut } = useAuth()
     const [isRole] = useRole()
     const [openNav, setOpenNav] = React.useState(false);
+
+    const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+        console.log(theme);
+    };
 
     useEffect(() => {
         window.addEventListener(
@@ -45,7 +50,7 @@ const Navigation = () => {
             </Typography>
 
 
-            <Typography as="li"  color="blue-gray" className="p-1 font-normal" >
+            <Typography as="li" color="blue-gray" className="p-1 font-normal" >
                 <NavLink to='/instructors' className="flex items-center">
                     Instructors
                 </NavLink>
@@ -63,21 +68,21 @@ const Navigation = () => {
                     <>
                         <Typography as="li" color="blue-gray" className="p-1 font-normal" >
                             {
-                                isRole==='Student' && <NavLink to='/dashboard/studenthome' className="flex items-center">
-                                DashBoard
-                            </NavLink>
+                                isRole === 'Student' && <NavLink to='/dashboard/studenthome' className="flex items-center">
+                                    DashBoard
+                                </NavLink>
                             }
                             {
-                                isRole==='Instructor' && <NavLink to='/dashboard/instructorhome' className="flex items-center">
-                                DashBoard
-                            </NavLink>
+                                isRole === 'Instructor' && <NavLink to='/dashboard/instructorhome' className="flex items-center">
+                                    DashBoard
+                                </NavLink>
                             }
                             {
-                                isRole==='Admin' && <NavLink to='/dashboard/adminhome' className="flex items-center">
-                                DashBoard
-                            </NavLink>
+                                isRole === 'Admin' && <NavLink to='/dashboard/adminhome' className="flex items-center">
+                                    DashBoard
+                                </NavLink>
                             }
-                            
+
                         </Typography>
                         <Menu>
                             <MenuHandler>
@@ -89,21 +94,20 @@ const Navigation = () => {
                                 />
                             </MenuHandler>
                             <MenuList>
-                                {/* <MenuItem className="flex items-center gap-2">
-                                    <UserCircleIcon strokeWidth={2} className="h-4 w-4" />
-                                    <Typography variant="small" className="font-normal">
-                                        <NavLink to='/dashboard'>
-                                        DashBoard
-                                        </NavLink>
-                                    </Typography>
-                                </MenuItem> */}
-
-                                {/* <hr className="my-2 border-blue-gray-50" /> */}
                                 <MenuItem className="flex items-center gap-2 ">
                                     <PowerIcon strokeWidth={2} className="h-4 w-4" />
                                     <Typography onClick={handleLogOut} variant="small" className="font-normal">
                                         Log Out
                                     </Typography>
+                                </MenuItem>
+                                <MenuItem className="flex items-center gap-2 ">
+
+                                    <Button color='indigo' variant='text' onClick={toggleTheme} className='flex items-center justify-center'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                                        </svg>
+                                        <p className='text-xs font-normal'> Toggle Theme</p>
+                                    </Button>
                                 </MenuItem>
                             </MenuList>
                         </Menu>
@@ -123,19 +127,19 @@ const Navigation = () => {
     );
 
     return (
-        < div className='w-full md:absolute -top-0 z-10 bg-white dark:bg-black'>
+        < div className='sticky w-full  -top-0 z-10 bg-white dark:bg-black'>
             <section className=" seperatorWrapper">
                 <div className="seperatorGradient">
                 </div>
             </section>
             <Navbar className=" inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-2">
                 <div className="flex items-center justify-between text-blue-gray-900">
-                   <NavLink to='/' className='flex items-center'>
-                    <Typography className="mr-4 cursor-pointer py-1.5  font-bold text-3xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent" > Sports Camp </Typography>
-                    <img src={logo} alt="brand" className="h-16 w-18 " />
+                    <NavLink to='/' className='flex items-center'>
+                        <Typography className="mr-4 cursor-pointer py-1.5  font-bold text-3xl bg-clip-text bg-gradient-to-r from-green-500 to-indigo-600  text-transparent" > Sports Camp </Typography>
+                        <img src={logo} alt="brand" className="h-16 w-18 " />
 
-                   </NavLink>
-                    
+                    </NavLink>
+
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">{navList}</div>
                         {/* //button */}
@@ -183,25 +187,6 @@ const Navigation = () => {
                     </Button>
                 </Collapse>
             </Navbar>
-            {/* <section className=" seperatorWrapper">
-                <div className="seperatorGradient">
-                </div>
-            </section> */}
-
-            {/* <Carousel autoplay="true" autoplayInterval="3000"
-            speed="2000"
-            wrapAround="true"
-            slideCount="4"
-             easing={easeCircleOut} edgeEasing={easeElasticOut}>
-      <img  className=' object-cover w-full' src={image} />
-      <img src="/image2.png" />
-      <img src="/image3.png" />
-      <img src="/image4.png" />
-      <img src="/image5.png" />
-    </Carousel> */}
-
-
-
 
         </div>
     );

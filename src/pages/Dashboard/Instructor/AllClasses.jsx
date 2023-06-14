@@ -9,12 +9,10 @@ import {
     DialogBody,
     DialogFooter,
     Typography,
+    Textarea,
 } from "@material-tailwind/react";
-import {
-    ArrowLongRightIcon
-} from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
-// import { Button} from "@material-tailwind/react";
 import { NavLink, } from 'react-router-dom';
 
 
@@ -24,8 +22,21 @@ const TABLE_HEAD = ["#", "Class Name", "Price", "Seats", "Enrolled", "Status", "
 
 const AllClasses = () => {
     const [open, setOpen] = useState(false);
+    const [selectedRow, setSelectedRow] = useState(null);
 
-    const handleOpen = () => setOpen(!open);
+    const handleOpen = () => {
+        setOpen(true);
+      };
+  
+      const handleOpenModal = (row) => {
+          setSelectedRow(row);
+          handleOpen();
+        };
+  
+  
+  const handleClose = () => {
+    setOpen(false);
+  };
 
     const [Axios] = useAxios()
     const { user } = useAuth()
@@ -46,10 +57,13 @@ const AllClasses = () => {
 
         <div className="w-11/12 mx-auto">
 
-            <div className="text-center text-gray-800 text-2xl py-5">
+            {/* <div className="text-center text-gray-800 text-2xl py-5">
                 <p>My Classes</p>
+            </div> */}
+            <div className='pb-4 text-center'>
+               <h2 className="mt-4  text-2xl font-semibold leading  text-black/70">Classes</h2>
+            <small>{myClasses?.length} data found</small> 
             </div>
-
 
 
             <div className="w-full">
@@ -108,12 +122,32 @@ const AllClasses = () => {
                                             </Typography>
                                         </td>
                                         <td className={classes}>
-                                            <Button size='sm' variant='text' onClick={handleOpen}>
+                                            <Button size='sm' variant='text'onClick={() => handleOpenModal(item)}>
                                                 Read
                                             </Button>
 
+
+                                            <Dialog open={open} onClose={handleClose}>
+        <div className="flex items-center justify-between">
+          <DialogHeader>{selectedRow?.name}</DialogHeader>
+          <XMarkIcon className="mr-3 h-5 w-5" onClick={handleClose} />
+        </div>
+        <DialogBody divider>
+
+        <Typography>
+     {selectedRow?.feedback? selectedRow.feedback : "No Feedback"}
+    </Typography>
+
+        </DialogBody>
+        <DialogFooter className="space-x-2">
+        <Button variant="gradient" onClick={handleOpen}>
+                                                        Ok, Got it
+                                                    </Button>
+        </DialogFooter>
+      </Dialog>
+
                                         
-                                            <Dialog open={open} handler={handleOpen}>
+                                            {/* <Dialog open={open} handler={handleOpen}>
                                                 <DialogHeader>
                                                     <Typography variant="h5" color="blue-gray">
                                                         Your Attention is Required!
@@ -126,14 +160,11 @@ const AllClasses = () => {
                                                     </Typography>
                                                 </DialogBody>
                                                 <DialogFooter className="space-x-2">
-                                                    {/* <Button variant="text" color="blue-gray" onClick={handleOpen}>
-                                                        close
-                                                    </Button> */}
                                                     <Button variant="gradient" onClick={handleOpen}>
                                                         Ok, Got it
                                                     </Button>
                                                 </DialogFooter>
-                                            </Dialog>
+                                            </Dialog> */}
                                         </td>
                                         <td className={classes}>
                                             <Typography variant="small" className="font-medium">

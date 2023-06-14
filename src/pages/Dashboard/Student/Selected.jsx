@@ -12,6 +12,7 @@ const Selected = () => {
     const [cart, refetch] = useCart()
     
     const selectedClasses = cart.filter(singleClass=> singleClass.status !== "Paid")
+    console.log(selectedClasses[0]);
 
     const handleDelete = id => {
         console.log(id);
@@ -48,8 +49,9 @@ const Selected = () => {
     return (
         <div className="w-11/12 mx-auto">
 
-            <div className="text-center text-gray-800 text-2xl py-5">
-                <p>Selected Classes</p>
+<div className='py-4 text-center'>
+               <h2 className="-mt-4  text-2xl font-semibold leading  text-black/70">Selected Classes</h2>
+            <small>{selectedClasses?.length} in wishlist</small> 
             </div>
 
             {selectedClasses.length!==0 ?

@@ -25,6 +25,7 @@ import AdminRoute from "./AdminRoute";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import ManageClasses from "../pages/Dashboard/Admin/ManageClasses";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import StudentRoute from "./StudentRoute";
 
 
 export const router = createBrowserRouter([
@@ -58,42 +59,43 @@ export const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: 'studenthome',
-        element: <StudentHome></StudentHome>
+        element: <StudentRoute><StudentHome></StudentHome></StudentRoute>
       },
       {
         path: 'selected',
-        element: <Selected></Selected>
+        element: <StudentRoute><Selected></Selected></StudentRoute>
       },
       {
         path: 'enrolled',
-        element: <Enrolled></Enrolled>
+        element:<StudentRoute><Enrolled></Enrolled></StudentRoute> 
       },
       {
         path: 'payment/:id',
-        element: <Payment></Payment>
+        element: <StudentRoute><Payment></Payment></StudentRoute>
       },
       {
         path: 'history',
-        element: <PaymentHistory></PaymentHistory>
+        element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute> 
       },
       {
         path: 'instructorhome',
-        element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
+        element:<InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
       },
       {
         path: 'allclasses',
-        element: <AllClasses></AllClasses>
+        element: <InstructorRoute><AllClasses></AllClasses></InstructorRoute>
       },
       {
         path: 'addnew',
-        element: <AddNew></AddNew>
+        element: <InstructorRoute><AddNew></AddNew></InstructorRoute>
       },
       {
         path: 'update/:id',
-        element: <UpdateClass></UpdateClass>
+        element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>
       },
       {
         path: 'adminhome',
@@ -101,12 +103,12 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manageclasses',
-        element: <ManageClasses></ManageClasses>
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
 
       },
       {
         path: 'manageusers',
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
 
     ]

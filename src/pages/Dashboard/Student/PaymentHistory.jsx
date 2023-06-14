@@ -27,8 +27,9 @@ const PaymentHistory = () => {
 
         <div className="w-full mx-auto ">
 
-            <div className="text-center text-gray-800 text-2xl py-5">
-                <p>Payment History</p>
+<div className='py-4 text-center'>
+               <h2 className="-mt-4  text-2xl font-semibold leading  text-black/70">Transaction History</h2>
+            <small> A total of {history?.length} transactions have been recorded</small> 
             </div>
             {
                 history.length !== 0 ?

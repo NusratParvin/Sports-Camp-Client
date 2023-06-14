@@ -62,49 +62,62 @@ const ManageUsers = () => {
     // };
 
     const makeInstructor = (user) => {
-        Axios.put(`/users/${user._id}`, { role: 'Instructor' })
-            .then(res => {
-                const updatedUserData = userData.map(item => {
-                    if (item._id === user._id) {
-                        return { ...item, role: 'Instructor', disable: 'Instructor' };
+        if (user.role === "Instructor") {
+            toast(`${user.name} is already an ${user.role}`)
+        }
+        else {
+            Axios.put(`/users/${user._id}`, { role: 'Instructor' })
+                .then(res => {
+                    const updatedUserData = userData.map(item => {
+                        if (item._id === user._id) {
+                            return { ...item, role: 'Instructor', disable: 'Instructor' };
+                        }
+                        return item;
+                    });
+                    setUserData(updatedUserData);
+                    if (res.data.modifiedCount > 0) {
+                        toast.success(`${user.name} is Instructor now!`);
                     }
-                    return item;
+                })
+                .catch(err => {
+                    console.log(err);
                 });
-                setUserData(updatedUserData);
-                if (res.data.modifiedCount > 0) {
-                    toast.success(`${user.name} is Instructor now!`);
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        }
     };
 
     const makeAdmin = (user) => {
-        Axios.put(`/users/${user._id}`, { role: 'Admin' })
-            .then(res => {
-                const updatedUserData = userData.map(item => {
-                    if (item._id === user._id) {
-                        return { ...item, role: 'Admin', disable: 'Admin' };
+        if (user.role === "Admin") {
+            toast(`${user.name} is already an ${user.role}`)
+        }
+        else {
+            Axios.put(`/users/${user._id}`, { role: 'Admin' })
+                .then(res => {
+                    const updatedUserData = userData.map(item => {
+                        if (item._id === user._id) {
+                            return { ...item, role: 'Admin', disable: 'Admin' };
+                        }
+                        return item;
+                    });
+                    setUserData(updatedUserData);
+                    if (res.data.modifiedCount > 0) {
+                        toast.success(`${user.name} is Admin now!`);
                     }
-                    return item;
+                })
+                .catch(err => {
+                    console.log(err);
                 });
-                setUserData(updatedUserData);
-                if (res.data.modifiedCount > 0) {
-                    toast.success(`${user.name} is Admin now!`);
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
+        };
+    }
+
 
 
     return (
 
         <section class="container mx-auto p-2 font-mono">
-                        <h2 className="mb-4 text-2xl font-semibold leading text-center text-black/70">Classes</h2>
-
+            <div className='pb-4 text-center'>
+                <h2 className="-mt-4  text-2xl font-semibold leading  text-black/70">Users</h2>
+                <small>{userData?.length} users found</small>
+            </div>
             <div class="w-full mb-8 overflow-hidden shadow-lg">
                 <div class="w-full ">
                     <table class="w-full">
@@ -162,7 +175,7 @@ const ManageUsers = () => {
 
 
                                     <td class="px-4 py-3 text-sm border flex gap-3">
-                                        
+
                                         {singleUser.disable === 'Admin' ? (
                                             <Button disabled onClick={() => makeAdmin(singleUser)} size="sm" variant="outlined" color="red" className="px-2" >
                                                 Admin

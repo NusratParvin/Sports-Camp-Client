@@ -10,9 +10,9 @@ const useRole = () => {
             queryKey: ['isRole', user?.email],
             enabled: !loading,
             queryFn: async () => {
-                console.log('before axiosc call');
+                // console.log('before axiosc call');
                 const res = await Axios.get(`/users/role/${user?.email}`);
-                console.log('is role response', res.data.role)
+                // console.log('is role response', res.data.role)
                 return res.data.role;
             }
         })
